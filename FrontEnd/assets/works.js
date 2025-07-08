@@ -79,4 +79,16 @@ buttonObjet.addEventListener("click", ()=> {
     document.querySelector(".gallery").innerHTML = "";
     // Génération des travaux après filtres (reste que les objets)
     generateWorks(worksObjets);
+});
+
+// Filtre pour afficher les travaux de la catégories "appartements"
+const buttonAppartement = document.querySelector("#appartements");
+buttonAppartement.addEventListener("click", ()=> {
+    // Vérification que l'écouteur fonctionne
+    console.log ("Vous avez cliqué que le bouton de filtre 'Appartements' !");
+    const worksAppartements = works.filter(function(works) {
+        return works.category.id === 2;
+    });
+    document.querySelector(".gallery").innerHTML = "";
+    generateWorks(worksAppartements);
 })
