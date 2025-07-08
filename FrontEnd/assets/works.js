@@ -34,7 +34,7 @@ const reponseCat = await fetch("http://localhost:5678/api/categories");
 const categories = await reponseCat.json();
 
 // Vérification de la récupération des données
-console.log(categories);
+// console.log(categories);
 
 //Création des boutons de filtres
 let sectionButton = document.querySelector(".filters");
@@ -59,7 +59,7 @@ function filtersChange(button) {
 // Ecouteur sur les boutons pour changer la couleur au click
 buttonFilters.forEach((button)=> {
     button.addEventListener("click", ()=> {
-        console.log("Vous avez clicker sur un bouton de filtre !");
+        // console.log("Vous avez clicker sur un bouton de filtre !");
         filtersChange(button);
     })
 })
