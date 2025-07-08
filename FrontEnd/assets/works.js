@@ -28,3 +28,10 @@ function generateWorks(works) {
 
 // Appel de la fonction pour générer la gallery
 generateWorks(works);
+
+// Récupération des catégories
+const reponseCat = await fetch("http://localhost:5678/api/categories");
+const categories = await reponseCat.json();
+
+// Vérification de la récupération des données
+console.log(categories)
