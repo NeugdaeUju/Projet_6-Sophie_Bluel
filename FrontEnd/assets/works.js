@@ -34,4 +34,15 @@ const reponseCat = await fetch("http://localhost:5678/api/categories");
 const categories = await reponseCat.json();
 
 // Vérification de la récupération des données
-console.log(categories)
+console.log(categories);
+
+//Création des boutons de filtres
+let sectionButton = document.querySelector(".filters");
+for(let i = 0 ; i < categories.length ; i++) {
+    let cat = categories[i];
+    let button = document.createElement("button");
+    button.classList.add("filters__button");
+    button.innerText = cat.name;
+    button.id = cat.name.toLowerCase( ).replace(/\s+/g, "-").replace(/[^a-z0-9\-]/g, "");
+    sectionButton.appendChild(button);
+}
