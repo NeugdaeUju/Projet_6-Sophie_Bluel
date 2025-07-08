@@ -25,3 +25,6 @@ function generateWorks(works) {
         workElement.appendChild(captionElement);
     }
 }
+
+// Appel de la fonction pour générer la gallery
+generateWorks(works);
