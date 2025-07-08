@@ -68,6 +68,11 @@ table {
 	cursor : pointer;
 }
 
+.filters__button--selected {
+	background-color: #1D6154;
+	color : White;
+}
+
 /** end reset css**/
 body {
 	max-width: 1140px;
