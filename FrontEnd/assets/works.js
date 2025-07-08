@@ -92,7 +92,7 @@ buttonAppartement.addEventListener("click", ()=> {
     generateWorks(worksAppartements);
 })
 
-// Filtre pour afficher les travaux de la catégories "appartements"
+// Filtre pour afficher les travaux de la catégories "Hotels & Restaurants"
 const buttonHotelsRestaurants = document.querySelector("#hotels--restaurants");
 buttonHotelsRestaurants.addEventListener("click", ()=> {
     // console.log ("Vous avez cliqué que le bouton de filtre 'Hotels & Restaurants' !");
@@ -101,4 +101,15 @@ buttonHotelsRestaurants.addEventListener("click", ()=> {
     });
     document.querySelector(".gallery").innerHTML = "";
     generateWorks(worksHotelsRestaurants);
+})
+
+// Filtres pour afficher tous les travaux (toutes catégories confondues)
+const buttonTous = document.querySelector("#tous");
+buttonTous.addEventListener("click", ()=> {
+    // console.log ("Vous avez cliqué que le bouton de filtre 'Tous' !");
+    const worksTous = works.filter(function(works) {
+        return works.category.id === 1 ||  works.category.id === 2 ||works.category.id === 3;
+    });
+    document.querySelector(".gallery").innerHTML = "";
+    generateWorks(worksTous);
 })
