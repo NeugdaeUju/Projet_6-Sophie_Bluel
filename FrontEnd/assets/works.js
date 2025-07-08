@@ -45,4 +45,13 @@ for(let i = 0 ; i < categories.length ; i++) {
     button.innerText = cat.name;
     button.id = cat.name.toLowerCase( ).replace(/\s+/g, "-").replace(/[^a-z0-9\-]/g, "");
     sectionButton.appendChild(button);
-}
+};
+
+// Fonction pour changer la class des boutons (gestion couleurs)
+const buttonFilters = document.querySelectorAll(".filters__button");
+function filtersChange(button) {
+    buttonFilters.forEach(button => {
+        button.classList.remove("filters__button--selected")
+    });
+    button.classList.add("filters__button--selected");
+};
