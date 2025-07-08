@@ -92,3 +92,15 @@ buttonAppartement.addEventListener("click", ()=> {
     document.querySelector(".gallery").innerHTML = "";
     generateWorks(worksAppartements);
 })
+
+// Filtre pour afficher les travaux de la catégories "appartements"
+const buttonHotelsRestaurants = document.querySelector("#hotels--restaurants");
+buttonHotelsRestaurants.addEventListener("click", ()=> {
+    // Vérification que l'écouteur fonctionne
+    console.log ("Vous avez cliqué que le bouton de filtre 'Hotels & Restaurants' !");
+    const worksHotelsRestaurants = works.filter(function(works) {
+        return works.category.id === 3;
+    });
+    document.querySelector(".gallery").innerHTML = "";
+    generateWorks(worksHotelsRestaurants);
+})
