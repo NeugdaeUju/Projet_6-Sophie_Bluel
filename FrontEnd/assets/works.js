@@ -3,7 +3,7 @@ const reponse = await fetch("http://localhost:5678/api/works/");
 const works = await reponse.json();
 
 // Vérification de la récupération des données
-console.log(works);
+// console.log(works);
 
 // Fonction pour générer les fiches de travaux
 function generateWorks(works) {
