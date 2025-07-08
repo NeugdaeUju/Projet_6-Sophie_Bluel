@@ -55,3 +55,11 @@ function filtersChange(button) {
     });
     button.classList.add("filters__button--selected");
 };
+
+// Ecouteur sur les boutons pour changer la couleur au click
+buttonFilters.forEach((button)=> {
+    button.addEventListener("click", ()=> {
+        console.log("Vous avez clicker sur un bouton de filtre !");
+        filtersChange(button);
+    })
+})
