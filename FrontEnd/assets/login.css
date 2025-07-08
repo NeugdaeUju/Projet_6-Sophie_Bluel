@@ -118,3 +118,10 @@ button:hover {
     text-decoration: underline;
     color : #3D3D3D;
 }
+
+/* Footer */
+footer nav ul {
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 20px;
+}
