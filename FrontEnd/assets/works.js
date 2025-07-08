@@ -70,7 +70,7 @@ buttonFilters.forEach((button)=> {
 const buttonObjet = document.querySelector("#objets");
 buttonObjet.addEventListener("click", ()=> {
     // Vérification que l'écouteur fonctionne
-    console.log ("Vous avez cliqué que le bouton de filtre 'Objet' !");
+    // console.log ("Vous avez cliqué que le bouton de filtre 'Objet' !");
     // Filtre des travaux
     const worksObjets = works.filter(function(works) {
         return works.category.id === 1;
@@ -84,8 +84,7 @@ buttonObjet.addEventListener("click", ()=> {
 // Filtre pour afficher les travaux de la catégories "appartements"
 const buttonAppartement = document.querySelector("#appartements");
 buttonAppartement.addEventListener("click", ()=> {
-    // Vérification que l'écouteur fonctionne
-    console.log ("Vous avez cliqué que le bouton de filtre 'Appartements' !");
+    // console.log ("Vous avez cliqué que le bouton de filtre 'Appartements' !");
     const worksAppartements = works.filter(function(works) {
         return works.category.id === 2;
     });
@@ -96,8 +95,7 @@ buttonAppartement.addEventListener("click", ()=> {
 // Filtre pour afficher les travaux de la catégories "appartements"
 const buttonHotelsRestaurants = document.querySelector("#hotels--restaurants");
 buttonHotelsRestaurants.addEventListener("click", ()=> {
-    // Vérification que l'écouteur fonctionne
-    console.log ("Vous avez cliqué que le bouton de filtre 'Hotels & Restaurants' !");
+    // console.log ("Vous avez cliqué que le bouton de filtre 'Hotels & Restaurants' !");
     const worksHotelsRestaurants = works.filter(function(works) {
         return works.category.id === 3;
     });
