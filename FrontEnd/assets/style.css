@@ -46,6 +46,33 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+/** filters buttons **/
+.filters {
+	margin : 50px 0;
+	display : flex;
+	justify-content : center;
+}
+
+.filters__button {
+	font-size : 16px;
+	font-weight: 700;
+	background-color: white;
+	border : 2px solid  #1D6154;
+	border-radius : 60px;
+	text-align : center;
+	padding : 9px 30px;
+	font-family : Syne;
+	color : #1D6154;
+	margin : 0 5px;
+	cursor : pointer;
+}
+
+.filters__button--selected {
+	background-color: #1D6154;
+	color : White;
+}
+
 /** end reset css**/
 body {
 	max-width: 1140px;

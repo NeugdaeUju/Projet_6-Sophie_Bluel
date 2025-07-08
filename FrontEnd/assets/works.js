@@ -28,3 +28,88 @@ function generateWorks(works) {
 
 // Appel de la fonction pour générer la gallery
 generateWorks(works);
+
+// Récupération des catégories
+const reponseCat = await fetch("http://localhost:5678/api/categories");
+const categories = await reponseCat.json();
+
+// Vérification de la récupération des données
+// console.log(categories);
+
+//Création des boutons de filtres
+let sectionButton = document.querySelector(".filters");
+for(let i = 0 ; i < categories.length ; i++) {
+    let cat = categories[i];
+    let button = document.createElement("button");
+    button.classList.add("filters__button");
+    button.innerText = cat.name;
+    button.id = cat.name.toLowerCase( ).replace(/\s+/g, "-").replace(/[^a-z0-9\-]/g, "");
+    sectionButton.appendChild(button);
+};
+
+// Fonction pour changer la class des boutons (gestion couleurs)
+const buttonFilters = document.querySelectorAll(".filters__button");
+function filtersChange(button) {
+    buttonFilters.forEach(button => {
+        button.classList.remove("filters__button--selected")
+    });
+    button.classList.add("filters__button--selected");
+};
+
+// Ecouteur sur les boutons pour changer la couleur au click
+buttonFilters.forEach((button)=> {
+    button.addEventListener("click", ()=> {
+        // console.log("Vous avez clicker sur un bouton de filtre !");
+        filtersChange(button);
+    })
+})
+
+
+// Gestion des boutons de filtres
+// Filtre pour afficher les travaux de la catégories "objets"
+const buttonObjet = document.querySelector("#objets");
+buttonObjet.addEventListener("click", ()=> {
+    // Vérification que l'écouteur fonctionne
+    // console.log ("Vous avez cliqué que le bouton de filtre 'Objet' !");
+    // Filtre des travaux
+    const worksObjets = works.filter(function(works) {
+        return works.category.id === 1;
+    });
+    // Suppression de tout ce que contient la section gallery
+    document.querySelector(".gallery").innerHTML = "";
+    // Génération des travaux après filtres (reste que les objets)
+    generateWorks(worksObjets);
+});
+
+// Filtre pour afficher les travaux de la catégories "appartements"
+const buttonAppartement = document.querySelector("#appartements");
+buttonAppartement.addEventListener("click", ()=> {
+    // console.log ("Vous avez cliqué que le bouton de filtre 'Appartements' !");
+    const worksAppartements = works.filter(function(works) {
+        return works.category.id === 2;
+    });
+    document.querySelector(".gallery").innerHTML = "";
+    generateWorks(worksAppartements);
+})
+
+// Filtre pour afficher les travaux de la catégories "Hotels & Restaurants"
+const buttonHotelsRestaurants = document.querySelector("#hotels--restaurants");
+buttonHotelsRestaurants.addEventListener("click", ()=> {
+    // console.log ("Vous avez cliqué que le bouton de filtre 'Hotels & Restaurants' !");
+    const worksHotelsRestaurants = works.filter(function(works) {
+        return works.category.id === 3;
+    });
+    document.querySelector(".gallery").innerHTML = "";
+    generateWorks(worksHotelsRestaurants);
+})
+
+// Filtres pour afficher tous les travaux (toutes catégories confondues)
+const buttonTous = document.querySelector("#tous");
+buttonTous.addEventListener("click", ()=> {
+    // console.log ("Vous avez cliqué que le bouton de filtre 'Tous' !");
+    const worksTous = works.filter(function(works) {
+        return works.category.id === 1 ||  works.category.id === 2 ||works.category.id === 3;
+    });
+    document.querySelector(".gallery").innerHTML = "";
+    generateWorks(worksTous);
+})
