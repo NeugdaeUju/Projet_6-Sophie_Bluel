@@ -63,3 +63,20 @@ buttonFilters.forEach((button)=> {
         filtersChange(button);
     })
 })
+
+
+// Gestion des boutons de filtres
+// Filtre pour afficher les travaux de la catégories "objets"
+const buttonObjet = document.querySelector("#objets");
+buttonObjet.addEventListener("click", ()=> {
+    // Vérification que l'écouteur fonctionne
+    console.log ("Vous avez cliqué que le bouton de filtre 'Objet' !");
+    // Filtre des travaux
+    const worksObjets = works.filter(function(works) {
+        return works.category.id === 1;
+    });
+    // Suppression de tout ce que contient la section gallery
+    document.querySelector(".gallery").innerHTML = "";
+    // Génération des travaux après filtres (reste que les objets)
+    generateWorks(worksObjets);
+})
