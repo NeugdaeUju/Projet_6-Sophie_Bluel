@@ -131,4 +131,6 @@ if (token) {
     // Ajout du bandeau administrateur
     document.querySelector(".adminBand").removeAttribute("hidden");
     document.querySelector(".adminBand").style.display="flex";
+    // Suppression des boutons de filtres
+    sectionButton.innerHTML = "";
 };
