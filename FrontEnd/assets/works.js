@@ -136,3 +136,6 @@ if (token) {
     // Affichage du bouton de modification
     document.querySelector(".modifier").removeAttribute("hidden");
 };
+
+// Déconnexion de la page
+const logoutButton = document.querySelector(".logout");
