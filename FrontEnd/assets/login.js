@@ -10,5 +10,12 @@ form.addEventListener("submit", (event)=> {
         alert("Tous les champs sont requis.");
         return;
     }
-})
+    
+    //Stockage des données des connexion
+const userData = {
+    email: emailInput.value.trim(),
+    password : passwordInput.value.trim()
+};
+
+});
 
