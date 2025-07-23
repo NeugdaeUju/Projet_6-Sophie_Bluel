@@ -128,4 +128,7 @@ if (token) {
     // Modifier la class du bouton de log
     linkLog.classList.remove("login");
     linkLog.classList.add("logout");
+    // Ajout du bandeau administrateur
+    document.querySelector(".adminBand").removeAttribute("hidden");
+    document.querySelector(".adminBand").style.display="flex";
 };
