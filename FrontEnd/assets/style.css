@@ -178,6 +178,31 @@ li:hover , a:hover {
 #portfolio h2 {
 	text-align: center;
 }
+
+/* Bouton de modification */
+.portfolio__title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top : 50px;
+}
+
+.modifier {
+	font-family : 'Work Sans';
+	font-size : 14px;
+	font-weight: 400;
+	background-color: #FFFEF8;
+	border : none;
+	margin-left : 30px;
+	cursor : pointer;
+}
+
+.modifier__icon {
+	width : 15.58px;
+	height: 15.58px;
+	margin-right : 10.48px
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
