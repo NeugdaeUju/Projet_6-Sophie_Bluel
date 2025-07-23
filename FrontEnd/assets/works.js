@@ -118,8 +118,7 @@ buttonTous.addEventListener("click", ()=> {
 // Modification de la page d'accueil après la connexion de l'utilisateur
 // Récupération du token
 const token = localStorage.getItem("token");
-console.log(token);
-
+// console.log(token);
 if (token) {
     //Modification du lien de connexion en déconnexion
     const linkLog = document.querySelector(".login");
@@ -140,12 +139,12 @@ if (token) {
 // Déconnexion de la page
 const logoutButton = document.querySelector(".logout");
 if (logoutButton) {
-    console.log("Bouton de logout trouvé !")
+    // console.log("Bouton de logout trouvé !")
     logoutButton.addEventListener("click", (event) => {
-        console.log("Vous avez appuyé sur le bouton de LogOut !")
+        // console.log("Vous avez appuyé sur le bouton de LogOut !")
         event.preventDefault();
         localStorage.removeItem("token");
-        console.log("Déconnexion effectuée !");
+        // console.log("Déconnexion effectuée !");
         window.location.href = "./index.html";
     })
 }
