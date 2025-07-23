@@ -125,4 +125,7 @@ if (token) {
     const linkLog = document.querySelector(".login");
     const linkLogOut = "logout"
     linkLog.innerText = linkLogOut
+    // Modifier la class du bouton de log
+    linkLog.classList.remove("login");
+    linkLog.classList.add("logout");
 };
