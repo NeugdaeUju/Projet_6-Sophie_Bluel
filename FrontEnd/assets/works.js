@@ -113,3 +113,38 @@ buttonTous.addEventListener("click", ()=> {
     document.querySelector(".gallery").innerHTML = "";
     generateWorks(worksTous);
 })
+
+
+// Modification de la page d'accueil après la connexion de l'utilisateur
+// Récupération du token
+const token = localStorage.getItem("token");
+// console.log(token);
+if (token) {
+    //Modification du lien de connexion en déconnexion
+    const linkLog = document.querySelector(".login");
+    const linkLogOut = "logout"
+    linkLog.innerText = linkLogOut
+    // Modifier la class du bouton de log
+    linkLog.classList.remove("login");
+    linkLog.classList.add("logout");
+    // Ajout du bandeau administrateur
+    document.querySelector(".adminBand").removeAttribute("hidden");
+    document.querySelector(".adminBand").style.display="flex";
+    // Suppression des boutons de filtres
+    sectionButton.innerHTML = "";
+    // Affichage du bouton de modification
+    document.querySelector(".modifier").removeAttribute("hidden");
+};
+
+// Déconnexion de la page
+const logoutButton = document.querySelector(".logout");
+if (logoutButton) {
+    // console.log("Bouton de logout trouvé !")
+    logoutButton.addEventListener("click", (event) => {
+        // console.log("Vous avez appuyé sur le bouton de LogOut !")
+        event.preventDefault();
+        localStorage.removeItem("token");
+        // console.log("Déconnexion effectuée !");
+        window.location.href = "./index.html";
+    })
+}
