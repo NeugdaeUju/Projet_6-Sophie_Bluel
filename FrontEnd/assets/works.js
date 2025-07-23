@@ -146,6 +146,6 @@ if (logoutButton) {
         event.preventDefault();
         localStorage.removeItem("token");
         console.log("Déconnexion effectuée !");
-        
+        window.location.href = "./index.html";
     })
 }
