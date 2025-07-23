@@ -23,6 +23,9 @@ fetch("http://localhost:5678/api/users/login/", {
     headers : {"Content-Type" : "application/json"},
     body : JSON.stringify(userData)
 })
-
+    .then(reponse => reponse.json())
+    .then(data => {
+        console.log(data);
+    });
 });
 
