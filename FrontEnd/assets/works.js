@@ -113,3 +113,9 @@ buttonTous.addEventListener("click", ()=> {
     document.querySelector(".gallery").innerHTML = "";
     generateWorks(worksTous);
 })
+
+
+// Modification de la page d'accueil après la connexion de l'utilisateur
+// Récupération du token
+const token = localStorage.getItem("token");
+console.log(token);
