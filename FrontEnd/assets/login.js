@@ -33,7 +33,10 @@ fetch("http://localhost:5678/api/users/login/", {
         } else {
             alert("Identifiants incorrects.");
         }
-    }) 
-
+    })
+    .catch(error => {
+    console.error(error);
+    alert("Erreur réseau.");
+    });
 });
 
