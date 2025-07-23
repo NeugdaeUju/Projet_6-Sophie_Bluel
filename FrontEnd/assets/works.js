@@ -141,5 +141,8 @@ if (token) {
 const logoutButton = document.querySelector(".logout");
 if (logoutButton) {
     console.log("Bouton de logout trouvé !")
-    
+    logoutButton.addEventListener("click", (event) => {
+        console.log("Vous avez appuyé sur le bouton de LogOut !")
+        
+    })
 }
