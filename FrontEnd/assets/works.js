@@ -119,3 +119,10 @@ buttonTous.addEventListener("click", ()=> {
 // Récupération du token
 const token = localStorage.getItem("token");
 console.log(token);
+
+if (token) {
+    //Modification du lien de connexion en déconnexion
+    const linkLog = document.querySelector(".login");
+    const linkLogOut = "logout"
+    linkLog.innerText = linkLogOut
+};
