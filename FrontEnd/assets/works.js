@@ -133,4 +133,6 @@ if (token) {
     document.querySelector(".adminBand").style.display="flex";
     // Suppression des boutons de filtres
     sectionButton.innerHTML = "";
+    // Affichage du bouton de modification
+    document.querySelector(".modifier").removeAttribute("hidden");
 };
