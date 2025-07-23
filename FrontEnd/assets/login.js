@@ -26,6 +26,14 @@ fetch("http://localhost:5678/api/users/login/", {
     .then(reponse => reponse.json())
     .then(data => {
         console.log(data);
-    });
+        if (data.token) {
+            console.log("Connexion réussi !")
+            localStorage.setItem("token", data.token);
+            window.location.href = "http://127.0.0.1:5500/FrontEnd/index.html";
+        } else {
+            alert("Identifiants incorrects.");
+        }
+    }) 
+
 });
 
