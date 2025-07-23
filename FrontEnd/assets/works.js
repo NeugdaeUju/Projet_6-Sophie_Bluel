@@ -139,3 +139,7 @@ if (token) {
 
 // Déconnexion de la page
 const logoutButton = document.querySelector(".logout");
+if (logoutButton) {
+    console.log("Bouton de logout trouvé !")
+    
+}
