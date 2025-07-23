@@ -1,26 +1,98 @@
-/* General */
-* {
-    margin : 0;
-    background-color: #FFFEF8;
-    font-family : 'Syne'; 
-}
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	color : black;
+	text-decoration: none;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
 body {
-    max-width: 1140px;
-    margin: auto;
-    font-family: 'Work Sans';
-    font-size: 14px;
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-/* Header */
+/** filters buttons **/
+.filters {
+	margin : 50px 0;
+	display : flex;
+	justify-content : center;
+}
+
+.filters__button {
+	font-size : 16px;
+	font-weight: 700;
+	background-color: white;
+	border : 2px solid  #1D6154;
+	border-radius : 60px;
+	text-align : center;
+	padding : 9px 30px;
+	font-family : Syne;
+	color : #1D6154;
+	margin : 0 5px;
+	cursor : pointer;
+}
+
+.filters__button--selected {
+	background-color: #1D6154;
+	color : White;
+}
+
+/** end reset css**/
+body {
+	max-width: 1140px;
+	margin:auto;
+	font-family: 'Work Sans' ;
+	font-size: 14px;
+}
 header {
-    margin-top: 50px;
-    display: flex;
+	display: flex;
 	justify-content: space-between;
+	margin: 50px 0
+}
+section {
+	margin: 50px 0
 }
 
-h1 {
-    display: flex;
+h1{
+	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
 	font-size: 22px;
@@ -29,11 +101,19 @@ h1 {
 }
 
 h1 > span {
+	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
+    color: #B1663C
 ;
 }
 
+h2{
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 30px;
+	color: #1D6154
+}
 nav ul {
 	display: flex;
 	align-items: center;
@@ -41,24 +121,20 @@ nav ul {
 
 }
 nav li {
-    padding: 0 10px;
-    font-size: 14px;
-    font-family : 'Work sans';
+	padding: 0 10px;
+	font-size: 1.2em;
+	cursor : pointer;
 }
 
 li:hover , a:hover {
 	color: #B1663C;
 }
 
-a {
-    color : black;
-    text-decoration: none;
-    font-family : 'Work sans';
+.login {
     font-weight: 600;
 }
 
-
-/*Formulaire de connexion*/
+/*Formulaire de connexion */
 main {
     display : flex;
     flex-direction: column;
@@ -119,9 +195,19 @@ button:hover {
     color : #3D3D3D;
 }
 
-/* Footer */
+/*Gestion des effets automatiques*/
+input:-webkit-autofill {
+    box-shadow : 0 0 0 1000px white inset,
+    0 4px 14px rgba(0, 0, 0, 0.09);
+    -webkit-text-fill-color: #000 !important;
+}
+
+input:focus {
+   outline : none;
+}
+
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin-bottom: 20px;
+	margin: 2em
 }
