@@ -42,7 +42,7 @@
 		<section id="portfolio">
 			<div class="portfolio__title">
 				<h2 class="portfolio__h2">Mes Projets</h2>
-				<button class="modifier" hidden><img src="assets/icons/modifier.svg" alt="icon de modification" class="modifier__icon">Modifier</button>
+				<button href="#modale" class="modifier" hidden><img src="assets/icons/modifier.svg" alt="icon de modification" class="modifier__icon">Modifier</button>
 			</div>
 			<div class="filters">
 				<button id="tous" class="filters__button filters__button--selected">Tous</button>
@@ -71,5 +71,14 @@
 			</ul>
 		</nav>
 	</footer>
+	<div class="modale" id="modale" aria-hidden="true" role="dialog" aria-labelledby="modale__title" style="display:none">
+		<div class="modale__content modale__stopClose">
+			<button class="modale__content__close"><img class ="modale__content__close--image" src="assets/icons/xmark.svg" alt="Fermer la fenêtre"></button>
+			<h3 class="modale__content__title">Galerie photo</h3>
+			<div class="modale__content__gallery">
+			</div>
+			<button class="modale__content__addWorks">Ajouter une photo</button>
+		</div>
+	</div>
 </body>
 </html>
