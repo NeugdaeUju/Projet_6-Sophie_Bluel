@@ -183,7 +183,10 @@ function openModale(event) {
     console.log("Le code lit la fonction");
     modale = document.querySelector(".modale");
     console.log(modale);
-    
+    // On ouvre la modale
+    modale.style.display = null;
+    modale.removeAttribute("aria-hidden");
+    modale.setAttribute("aria-modale", "true");
 }
 
 
