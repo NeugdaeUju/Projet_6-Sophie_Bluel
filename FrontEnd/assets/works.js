@@ -180,9 +180,9 @@ let modale = null;
 //Fonction pour ouvrir la modale
 function openModale(event) {
     event.preventDefault();
-    console.log("Le code lit la fonction");
+    // console.log("Le code lit la fonction");
     modale = document.querySelector(".modale");
-    console.log(modale);
+    // console.log(modale);
     // On ouvre la modale
     modale.style.display = null;
     modale.removeAttribute("aria-hidden");
@@ -190,11 +190,11 @@ function openModale(event) {
     // Ecouteur d'évènement dans la modale pour pouvoir la fermer
     modale.addEventListener("click", () => {
         closeModale(event);
-        console.log("Vous avez clicker pour fermer la modale !")
+        // console.log("Vous avez clicker pour fermer la modale !")
     });
     modale.querySelector(".modale__content__close").addEventListener("click", () => {
         closeModale(event);
-        console.log("Vous avez cliquer la crois pour fermer la modale !")
+        // console.log("Vous avez cliquer la crois pour fermer la modale !")
     });
     // Ecouteur d'évènements pour empêcher la modale de se fermer lorsqu'on clique dessus directement
     modale.querySelector(".modale__stopClose").addEventListener("click", stopPropagation);
@@ -205,18 +205,18 @@ function openModale(event) {
 function closeModale(event) {
     if (modale === null) return;
     event.preventDefault();
-    console.log("Le code lit la fonction  de fermeture !");
+    // console.log("Le code lit la fonction  de fermeture !");
     // On ferme la modale
     modale.style.display = "none";
     modale.setAttribute("aria-hidden", "true");
     modale.removeAttribute("aria-modale");
     modale.removeEventListener("click", () => {
         closeModale(event);
-        console.log("Vous avez clicker pour fermer la modale !")
+        // console.log("Vous avez clicker pour fermer la modale !")
     });
     modale.querySelector(".modale__content__close").removeEventListener("click", () => {
         closeModale(event);
-        console.log("Vous avez cliquer la crois pour fermer la modale !")
+        // console.log("Vous avez cliquer la crois pour fermer la modale !")
     });
     modale.querySelector(".modale__stopClose").removeEventListener("click", stopPropagation);
     modale = null;
