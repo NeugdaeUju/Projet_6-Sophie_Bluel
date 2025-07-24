@@ -175,6 +175,14 @@ function generateGalleryModale(works) {
 }
 
 generateGalleryModale(works);
+let modale = null;
+
+//Fonction pour ouvrir la modale
+function openModale(event) {
+    event.preventDefault();
+    console.log("Le code lit la fonction");
+}
+
 
 // Ouverture de la modale
 document.querySelector(".modifier").addEventListener("click", () => {
