@@ -223,6 +223,11 @@ function closeModale(event) {
     modale = null;
 }
 
+// Fonction pour éviter de fermer la modale au click sur celle-ci
+const stopPropagation = function(e) {
+    e.stopPropagation();
+}
+
 
 // Ouverture de la modale
 document.querySelector(".modifier").addEventListener("click", () => {
