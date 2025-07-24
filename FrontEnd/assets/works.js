@@ -196,6 +196,10 @@ function openModale(event) {
         closeModale(event);
         console.log("Vous avez cliquer la crois pour fermer la modale !")
     });
+    modale.querySelector(".modale__stopClose").removeEventListener("click", () => {
+        stopPropagation(event);
+        console.log("Vous avez appuyé sur la modale mais elle ne se ferme pas !");
+    })
 }
 
 
