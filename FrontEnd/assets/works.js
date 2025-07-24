@@ -212,6 +212,10 @@ function closeModale(event) {
         closeModale(event);
         console.log("Vous avez clicker pour fermer la modale !")
     });
+    modale.querySelector(".modale__content__close").removeEventListener("click", () => {
+        closeModale(event);
+        console.log("Vous avez cliquer la crois pour fermer la modale !")
+    });
     modale = null;
 }
 
