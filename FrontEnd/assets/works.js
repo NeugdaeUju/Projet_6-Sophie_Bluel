@@ -181,6 +181,9 @@ let modale = null;
 function openModale(event) {
     event.preventDefault();
     console.log("Le code lit la fonction");
+    modale = document.querySelector(".modale");
+    console.log(modale);
+    
 }
 
 
