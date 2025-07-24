@@ -208,6 +208,7 @@ function closeModale(event) {
         closeModale(event);
         console.log("Vous avez clicker pour fermer la modale !")
     });
+    modale = null;
 }
 
 
