@@ -187,6 +187,11 @@ function openModale(event) {
     modale.style.display = null;
     modale.removeAttribute("aria-hidden");
     modale.setAttribute("aria-modale", "true");
+    // Ecouteur d'évènement dans la modale pour pouvoir la fermer
+    modale.addEventListener("click", () => {
+        closeModale(event);
+        console.log("Vous avez clicker pour fermer la modale !")
+    });
 }
 
 
