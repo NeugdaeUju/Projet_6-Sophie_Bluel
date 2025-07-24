@@ -175,3 +175,10 @@ function generateGalleryModale(works) {
 }
 
 generateGalleryModale(works);
+
+// Ouverture de la modale
+document.querySelector(".modifier").addEventListener("click", () => {
+    // console.log("Vous avea appuyer sur un bouton pour afficher la modale !")
+    openModale(event);
+})
+
