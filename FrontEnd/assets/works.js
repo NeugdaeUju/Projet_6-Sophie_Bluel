@@ -148,3 +148,30 @@ if (logoutButton) {
         window.location.href = "./index.html";
     })
 }
+
+// Affichage des images des travaux dans la modale
+function generateGalleryModale(works) {
+    for (let i = 0 ; i < works.length ; i++) {
+        const article = works[i]
+        // Récupération de l'élément du DOM qui accueillera les éléments
+        const sectionGallery = document.querySelector(".modale__content__gallery");
+        // Création d'une balise dédédier à un travail
+        const workElement = document.createElement("figure");
+        // Création du contenu de l'élément
+        const imageElement = document.createElement("img");
+        imageElement.src = article.imageUrl;
+        imageElement.classList.add("modale__content__gallery--setup")
+        // On rattache la balise figure (l'élément) à la section gallery
+        sectionGallery.appendChild(workElement);
+        // On rattahce les éléments de contenu à la balise figure
+        workElement.appendChild(imageElement);
+
+        // Ajouter l'icone pour supprimer les travaux depuis la modale
+        const imageDelte = document.createElement("img");
+        imageDelte.setAttribute("src", "assets/icons/Group 10.png");
+        imageDelte.classList.add("modale__content__gallery--delte");
+        workElement.appendChild(imageDelte);
+    }
+}
+
+generateGalleryModale(works);
