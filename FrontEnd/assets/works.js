@@ -195,6 +195,14 @@ function openModale(event) {
 }
 
 
+// Fonction pour fermer la modale
+function closeModale(event) {
+    if (modale === null) return;
+    event.preventDefault();
+    console.log("Le code lit la fonction  de fermeture !");
+}
+
+
 // Ouverture de la modale
 document.querySelector(".modifier").addEventListener("click", () => {
     // console.log("Vous avea appuyer sur un bouton pour afficher la modale !")
