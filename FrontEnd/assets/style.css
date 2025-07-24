@@ -265,3 +265,83 @@ footer nav ul {
 	margin-bottom : 2em;
 }
 
+/*Modale*/
+.modale {
+	position : fixed ;
+	display : flex;
+	align-items : center;
+	justify-content : center;
+	top : 0;
+	left : 0;
+	width : 100%;
+	height : 100%;
+	background: rgba(0,0,0, 0.3);
+}
+
+.modale__content {
+	width: 600px;
+	max-width : calc(100vw - 50%);
+	padding : 45px;
+	background-color: #FFF;
+	border-radius : 10px;
+	display : flex;
+	flex-direction : column;
+	align-items: center;
+}
+
+.modale__content__close {
+	height : 24px;
+	width : 24px;
+	border : none;
+	background-color: #FFF;
+	position : relative;
+	right : -280px;
+	top : -20px;
+	cursor : pointer;
+}
+
+.modale__content__title {
+	font-family : 'Work Sans';
+	font-size : 26px;
+	font-weight: 400;
+	margin-top : 10px;
+	margin-bottom : 46px;
+}
+
+.modale__content__gallery {
+	padding-bottom : 67px;
+	border-bottom : 1px solid #B3B3B3;
+	width : 420px;
+	display : grid ;
+	grid-template-columns: 75px 75px 75px 75px 75px;
+	grid-template-rows: 100px 100px 100px;
+	gap : 30px 9px;
+}
+
+.modale__content__gallery--setup {
+	height : 100px;
+	width: 75px;
+	object-fit: contain;
+}
+
+.modale__content__gallery--delte {
+	width : 17px;
+	height: 17px;
+	position : relative;
+	top : -94px;
+	right : -50px;
+	cursor : pointer;
+}
+
+.modale__content__addWorks {
+	background-color: #1D6154;
+	color : #FFFEF8;
+	border-radius : 60px;
+	border : none;
+	font-family : 'Syne';
+	font-size : 14px;
+	font-weight: 600;
+	padding : 10px 49px;
+	margin-top : 38px;
+	cursor : pointer;
+}
