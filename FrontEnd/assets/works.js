@@ -196,10 +196,8 @@ function openModale(event) {
         closeModale(event);
         console.log("Vous avez cliquer la crois pour fermer la modale !")
     });
-    modale.querySelector(".modale__stopClose").removeEventListener("click", () => {
-        stopPropagation(event);
-        console.log("Vous avez appuyé sur la modale mais elle ne se ferme pas !");
-    })
+    // Ecouteur d'évènements pour empêcher la modale de se fermer lorsqu'on clique dessus directement
+    modale.querySelector(".modale__stopClose").addEventListener("click", stopPropagation);
 }
 
 
@@ -220,6 +218,7 @@ function closeModale(event) {
         closeModale(event);
         console.log("Vous avez cliquer la crois pour fermer la modale !")
     });
+    modale.querySelector(".modale__stopClose").removeEventListener("click", stopPropagation);
     modale = null;
 }
 
