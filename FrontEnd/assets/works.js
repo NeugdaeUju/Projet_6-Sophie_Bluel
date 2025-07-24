@@ -200,6 +200,10 @@ function closeModale(event) {
     if (modale === null) return;
     event.preventDefault();
     console.log("Le code lit la fonction  de fermeture !");
+    // On ferme la modale
+    modale.style.display = "none";
+    modale.setAttribute("aria-hidden", "true");
+    modale.removeAttribute("aria-modale");
 }
 
 
