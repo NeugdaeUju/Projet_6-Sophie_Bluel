@@ -345,3 +345,139 @@ footer nav ul {
 	margin-top : 38px;
 	cursor : pointer;
 }
+
+/* Modale : ajout de travaux */
+
+.modale__addWorks {
+	position : fixed ;
+	display : flex;
+	align-items : center;
+	justify-content : center;
+	top : 0;
+	left : 0;
+	width : 100%;
+	height : 100%;
+	background: rgba(0,0,0, 0.3);
+}
+
+.modale__addWorks__content {
+	width: 600px;
+	max-width : calc(100vw - 50%);
+	padding : 45px;
+	background-color: #FFF;
+	border-radius : 10px;
+	display : flex;
+	flex-direction : column;
+	align-items: center;
+}
+
+.modale__addWoks__close {
+	height : 24px;
+	width : 24px;
+	border : none;
+	background-color: #FFF;
+	position : relative;
+	right : -280px;
+	top : -20px;
+	cursor : pointer;
+}
+
+.modale__addWoks__back {
+	height : 24px;
+	width : 24px;
+	border : none;
+	background-color: #FFF;
+	position : relative;
+	left : -280px;
+	top : -20px;
+	cursor : pointer;
+}
+
+.modale__addWorks__title {
+	font-family : 'Work Sans';
+	font-size : 26px;
+	font-weight: 400;
+	margin-top : 10px;
+	margin-bottom : 46px;
+}
+
+.modale__addWorks__form {
+	display : flex;
+	flex-direction : column;
+	justify-content: center;
+	padding-bottom : 47px;
+	border-bottom : 1px solid #B3B3B3
+}
+
+.modale__addWorks__text, .modale__addWorks__category {
+	font-family : 'Work Sans';
+	font-size : 14px;
+	font-weight : 500;
+	margin-top : 25px;
+	color : #3D3D3D;
+}
+
+#modale__addWorks__text , #modale__addWorks__category {
+	width : 420px;
+	height : 50px;
+	margin-top : 10px;
+	border : none;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+input:-webkit-autofill {
+    box-shadow : 0 0 0 1000px white inset,
+    0 4px 14px rgba(0, 0, 0, 0.09);
+    -webkit-text-fill-color: #000 !important;
+}
+
+input:focus {
+   outline : none;
+}
+
+.modale__addWorks__submit {
+	width : 240px;
+	height : 35px;
+	background-color: #A7A7A7;
+	color : white;
+	font-family : 'Syne';
+	font-size : 14px;
+	font-weight : 700;
+	border : none;
+	border-radius : 60px;
+	margin-top : 32px;
+	cursor : pointer;
+}
+
+.modale__addWorks__form__addImage {
+	display : flex;
+	flex-direction : column;
+	justify-content: center;
+	align-items: center;
+	background-color: #E8F1F6;
+	padding-top : 13px;
+	padding-bottom : 19px;
+}
+
+.modale__addWorks__form__addImage--image {
+	height : 76px;
+	width : 76px;
+	margin-bottom : 6px;
+}
+
+.modale__addWorks__form__addImages--button {
+	width : 175px;
+	height : 35px;
+	border-radius : 60px;
+	border : none;
+	background-color: #CBD6DC;
+	color : #306685;
+	margin-bottom : 7px;
+}
+
+.modale__addWorks__form__addImage--subtitles {
+	font-family : 'Work Sans';
+	font-size : 10px;
+	font-weight: 400;
+	color : #444444;
+}
