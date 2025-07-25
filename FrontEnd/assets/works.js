@@ -240,62 +240,42 @@ let modaleAddworks = null;
 
 function openModaleAddworks(event) {
     event.preventDefault();
-    console.log("La fonction est bien lu par l'eventListener !");
+    // console.log("La fonction est bien lu par l'eventListener !");
     modaleAddworks = document.querySelector(".modale__addWorks");
-    console.log(modaleAddworks);
+    // console.log(modaleAddworks);
     modaleAddworks.style.display = null;
     modaleAddworks.removeAttribute("aria-hidden");
     modaleAddworks.setAttribute("aria-modale", "ture");
     // Ecouteur d'évenement dans la modale pour pouvoir la fermer
     modaleAddworks.addEventListener("click", () => {
         closeModaleAddWorks(event);
-        console.log("Vous avez fermer la modale d'ajout !");
+        // console.log("Vous avez fermer la modale d'ajout !");
         closeModale(event);
-        console.log("Les deux modale se sont fermée !");
+        // console.log("Les deux modale se sont fermée !");
     })
     modaleAddworks.querySelector(".modale__addWoks__close").addEventListener("click", () => {
         closeModaleAddWorks(event);
-        console.log("Vous avez appuyé sur la flèche de fermeture!");
+        // console.log("Vous avez appuyé sur la flèche de fermeture!");
         closeModale(event);
-        console.log("Les deux modale se sont fermée !");
+        // console.log("Les deux modale se sont fermée !");
     })
-    // Ecouteru d'évenement pour empécher la modale de ce fermer au clique sur celle-ci
+    // Ecouteur d'évenement pour empécher la modale de ce fermer au clique sur celle-ci
     modaleAddworks.querySelector(".modale__stopClose").addEventListener("click", stopPropagation);
     // Ecouteur d'évenement sur la flèche ppur fermer la modale d'ajout et retourner sur la modale de gestion
     modaleAddworks.querySelector(".modale__addWoks__back").addEventListener("click", () => {
         closeModaleAddWorks(event);
-        console.log("Vous avez cliquer sur la flèche et êtes retourner sur la modale précédente !")
+        // console.log("Vous avez cliqué pour revenir à la modale précédente !")
     })
 } 
 
 function closeModaleAddWorks(event) {
     if (modaleAddworks === null) return
     event.preventDefault();
-    console.log("La fonction de fermeture est lu par l'écouteur !")
+    // console.log("La fonction de fermeture est lu par l'écouteur !")
     // On ferme la modale
     modaleAddworks.style.display = "none";
     modaleAddworks.setAttribute("aria-hidden", "true");
     modaleAddworks.removeAttribute("aria-modale");
-    // Retirer les EventListener pour nettoyer la modale
-    modaleAddworks.removeEventListener("click", () => {
-        closeModaleAddWorks(event);
-        console.log("Vous avez fermer la modale d'ajout !");
-        closeModale(event);
-        console.log("Les deux modale se sont fermée !");
-    })
-    modaleAddworks.querySelector(".modale__addWoks__close").removeEventListener("click", () => {
-        closeModaleAddWorks(event);
-        console.log("Vous avez appuyé sur la flèche de fermeture!");
-        closeModale(event);
-        console.log("Les deux modale se sont fermée !");
-    })
-    // Ecouteru d'évenement pour empécher la modale de ce fermer au clique sur celle-ci
-    modaleAddworks.querySelector(".modale__stopClose").removeEventListener("click", stopPropagation);
-    // Ecouteur d'évenement sur la flèche ppur fermer la modale d'ajout et retourner sur la modale de gestion
-    modaleAddworks.querySelector(".modale__addWoks__back").removeEventListener("click", () => {
-        closeModaleAddWorks(event);
-        console.log("Vous avez cliquer sur la flèche et êtes retourner sur la modale précédente !")
-    })
 }
 
 // Ouverture de la modale
