@@ -295,7 +295,7 @@ footer nav ul {
 	border : none;
 	background-color: #FFF;
 	position : relative;
-	right : -280px;
+	right : -300px;
 	top : -20px;
 	cursor : pointer;
 }
@@ -377,19 +377,19 @@ footer nav ul {
 	border : none;
 	background-color: #FFF;
 	position : relative;
-	right : -280px;
+	right : -300px;
 	top : -20px;
 	cursor : pointer;
 }
 
 .modale__addWoks__back {
-	height : 24px;
-	width : 24px;
+	height : 21px;
+	width : 21px;
 	border : none;
 	background-color: #FFF;
 	position : relative;
-	left : -280px;
-	top : -20px;
+	left : -310px;
+	top : -40px;
 	cursor : pointer;
 }
 
