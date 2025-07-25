@@ -229,8 +229,17 @@ const stopPropagation = function(e) {
 
 
 // Ouverture de la modale
-document.querySelector(".modifier").addEventListener("click", () => {
+document.querySelector(".modifier").addEventListener("click", (event) => {
     // console.log("Vous avea appuyer sur un bouton pour afficher la modale !")
     openModale(event);
 })
 
+
+// Gestoin de la modale d'ajout de travaux
+let modaleAddworks = null;
+
+// Ouverture de la modale
+document.querySelector(".modale__content__addWorks").addEventListener("click", (event) => {
+    // console.log("Vous avea appuyer sur un bouton pour afficher la modale !")
+    openModaleAddworks(event);
+})
