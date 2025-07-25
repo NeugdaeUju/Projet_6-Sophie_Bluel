@@ -77,8 +77,29 @@
 			<h3 class="modale__content__title">Galerie photo</h3>
 			<div class="modale__content__gallery">
 			</div>
-			<button class="modale__content__addWorks">Ajouter une photo</button>
+			<button class="modale__content__addWorks" href="#modale__addWorks">Ajouter une photo</button>
 		</div>
 	</div>
+		<div id="modale__addWorks"  class="modale__addWorks" role="dialog" sytle="display:none"  aria-hidden="true" aria-labelledby="modale__addWorks__title">
+			<div class="modale__addWorks__content  modale__stopClose">
+				<button class="modale__addWoks__close"><img class ="modale__content__close--image" src="assets/icons/xmark.svg" alt="Fermer la fenêtre"></button>
+				<button class="modale__addWoks__back"><img class ="modale__content__back--image" src="assets/icons/arrow-left.png" alt="Retour"></button>
+				<h3 class="modale__addWorks__title">Ajout Photo</h3>
+				<form class="modale__addWorks__form">
+					<div class="modale__addWorks__form__addImage">
+						<img src="assets/icons/img.svg" alt="images" class="modale__addWorks__form__addImage--image">
+						<button class="modale__addWorks__form__addImages--button">
+							<input type="browser" class="modale__addWorks__form__addImag--input" hidden> + Ajouter photo
+						</button>
+						<p class="modale__addWorks__form__addImage--subtitles">jpg, png : 4mo max</p>
+					</div>
+					<label for="modale__addWorks__text" class="modale__addWorks__text">Titre</label>
+					<input type="text" id="modale__addWorks__text" name="titre">
+					<label for="modale__addWorks__category" class="modale__addWorks__category">Catégories</label>
+					<input list="category" id="modale__addWorks__category" name="categorie" />
+				</form>
+				<button class="modale__addWorks__submit">Valider</button>
+			</div>
+		</div>
 </body>
 </html>
