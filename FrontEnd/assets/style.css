@@ -473,6 +473,7 @@ input:focus {
 	background-color: #CBD6DC;
 	color : #306685;
 	margin-bottom : 7px;
+	cursor : pointer;
 }
 
 .modale__addWorks__form__addImage--subtitles {
