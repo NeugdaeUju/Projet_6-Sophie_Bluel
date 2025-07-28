@@ -148,3 +148,138 @@ if (logoutButton) {
         window.location.href = "./index.html";
     })
 }
+
+// Affichage des images des travaux dans la modale
+function generateGalleryModale(works) {
+    for (let i = 0 ; i < works.length ; i++) {
+        const article = works[i]
+        // Récupération de l'élément du DOM qui accueillera les éléments
+        const sectionGallery = document.querySelector(".modale__content__gallery");
+        // Création d'une balise dédédier à un travail
+        const workElement = document.createElement("figure");
+        // Création du contenu de l'élément
+        const imageElement = document.createElement("img");
+        imageElement.src = article.imageUrl;
+        imageElement.classList.add("modale__content__gallery--setup")
+        // On rattache la balise figure (l'élément) à la section gallery
+        sectionGallery.appendChild(workElement);
+        // On rattahce les éléments de contenu à la balise figure
+        workElement.appendChild(imageElement);
+
+        // Ajouter l'icone pour supprimer les travaux depuis la modale
+        const imageDelte = document.createElement("img");
+        imageDelte.setAttribute("src", "assets/icons/Group 10.png");
+        imageDelte.classList.add("modale__content__gallery--delte");
+        workElement.appendChild(imageDelte);
+    }
+}
+
+generateGalleryModale(works);
+let modale = null;
+
+//Fonction pour ouvrir la modale
+function openModale(event) {
+    event.preventDefault();
+    // console.log("Le code lit la fonction");
+    modale = document.querySelector(".modale");
+    // console.log(modale);
+    // On ouvre la modale
+    modale.style.display = null;
+    modale.removeAttribute("aria-hidden");
+    modale.setAttribute("aria-modale", "true");
+    // Ecouteur d'évènement dans la modale pour pouvoir la fermer
+    modale.addEventListener("click", () => {
+        closeModale(event);
+        // console.log("Vous avez clicker pour fermer la modale !")
+    });
+    modale.querySelector(".modale__content__close").addEventListener("click", () => {
+        closeModale(event);
+        // console.log("Vous avez cliquer la crois pour fermer la modale !")
+    });
+    // Ecouteur d'évènements pour empêcher la modale de se fermer lorsqu'on clique dessus directement
+    modale.querySelector(".modale__stopClose").addEventListener("click", stopPropagation);
+}
+
+
+// Fonction pour fermer la modale
+function closeModale(event) {
+    if (modale === null) return;
+    event.preventDefault();
+    // console.log("Le code lit la fonction  de fermeture !");
+    // On ferme la modale
+    modale.style.display = "none";
+    modale.setAttribute("aria-hidden", "true");
+    modale.removeAttribute("aria-modale");
+    modale.removeEventListener("click", () => {
+        closeModale(event);
+        // console.log("Vous avez clicker pour fermer la modale !")
+    });
+    modale.querySelector(".modale__content__close").removeEventListener("click", () => {
+        closeModale(event);
+        // console.log("Vous avez cliquer la crois pour fermer la modale !")
+    });
+    modale.querySelector(".modale__stopClose").removeEventListener("click", stopPropagation);
+    modale = null;
+}
+
+// Fonction pour éviter de fermer la modale au click sur celle-ci
+const stopPropagation = function(e) {
+    e.stopPropagation();
+}
+
+
+// Ouverture de la modale
+document.querySelector(".modifier").addEventListener("click", (event) => {
+    // console.log("Vous avea appuyer sur un bouton pour afficher la modale !")
+    openModale(event);
+})
+
+
+// Gestoin de la modale d'ajout de travaux
+let modaleAddworks = null;
+
+function openModaleAddworks(event) {
+    event.preventDefault();
+    // console.log("La fonction est bien lu par l'eventListener !");
+    modaleAddworks = document.querySelector(".modale__addWorks");
+    // console.log(modaleAddworks);
+    modaleAddworks.style.display = null;
+    modaleAddworks.removeAttribute("aria-hidden");
+    modaleAddworks.setAttribute("aria-modale", "ture");
+    // Ecouteur d'évenement dans la modale pour pouvoir la fermer
+    modaleAddworks.addEventListener("click", () => {
+        closeModaleAddWorks(event);
+        // console.log("Vous avez fermer la modale d'ajout !");
+        closeModale(event);
+        // console.log("Les deux modale se sont fermée !");
+    })
+    modaleAddworks.querySelector(".modale__addWoks__close").addEventListener("click", () => {
+        closeModaleAddWorks(event);
+        // console.log("Vous avez appuyé sur la flèche de fermeture!");
+        closeModale(event);
+        // console.log("Les deux modale se sont fermée !");
+    })
+    // Ecouteur d'évenement pour empécher la modale de ce fermer au clique sur celle-ci
+    modaleAddworks.querySelector(".modale__stopClose").addEventListener("click", stopPropagation);
+    // Ecouteur d'évenement sur la flèche ppur fermer la modale d'ajout et retourner sur la modale de gestion
+    modaleAddworks.querySelector(".modale__addWoks__back").addEventListener("click", () => {
+        closeModaleAddWorks(event);
+        // console.log("Vous avez cliqué pour revenir à la modale précédente !")
+    })
+} 
+
+function closeModaleAddWorks(event) {
+    if (modaleAddworks === null) return
+    event.preventDefault();
+    // console.log("La fonction de fermeture est lu par l'écouteur !")
+    // On ferme la modale
+    modaleAddworks.style.display = "none";
+    modaleAddworks.setAttribute("aria-hidden", "true");
+    modaleAddworks.removeAttribute("aria-modale");
+}
+
+// Ouverture de la modale
+document.querySelector(".modale__content__addWorks").addEventListener("click", (event) => {
+    // console.log("Vous avea appuyer sur un bouton pour afficher la modale !")
+    openModaleAddworks(event);
+})
