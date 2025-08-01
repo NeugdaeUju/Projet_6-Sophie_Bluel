@@ -297,5 +297,8 @@ for(let i = 0 ; i < buttonDelte.length ; i++) {
     buttonDelte[i].addEventListener("click", ()=> {
         // On vérifie sur quelle bouton on a cliquer
         console.log("vous avez clicker sur le bouton "+i);
+        // On récupère l'élément parent
+        const work = buttonDelte[i].parentElement;
+        console.log(work);
     });
 }
