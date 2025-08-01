@@ -293,4 +293,9 @@ console.log(buttonDelte);
 for(let i = 0 ; i < buttonDelte.length ; i++) {
     // Ajout d'une class au bouton pour identifier la position
     buttonDelte[i].classList.add("position_"+i);
+    // On écoute le click pour récupérer les infos
+    buttonDelte[i].addEventListener("click", ()=> {
+        // On vérifie sur quelle bouton on a cliquer
+        console.log("vous avez clicker sur le bouton "+i);
+    });
 }
