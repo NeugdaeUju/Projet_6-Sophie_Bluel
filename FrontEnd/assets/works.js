@@ -165,6 +165,9 @@ function generateGalleryModale(works) {
         sectionGallery.appendChild(workElement);
         // On rattahce les éléments de contenu à la balise figure
         workElement.appendChild(imageElement);
+        // On donne l'id du travaux
+        workElement.dataset.id = article.id;
+        console.log(workElement.dataset);
 
         // Ajouter l'icone pour supprimer les travaux depuis la modale
         const imageDelte = document.createElement("img");
@@ -300,5 +303,8 @@ for(let i = 0 ; i < buttonDelte.length ; i++) {
         // On récupère l'élément parent
         const work = buttonDelte[i].parentElement;
         console.log(work);
+        // On cherche l'id de la catégorie de l'élément
+        const workID = work.dataset.id;
+        console.log("ID de la catégorie de l'élément : "+ workID);
     });
 }
