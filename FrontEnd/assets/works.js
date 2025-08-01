@@ -165,6 +165,9 @@ function generateGalleryModale(works) {
         sectionGallery.appendChild(workElement);
         // On rattahce les éléments de contenu à la balise figure
         workElement.appendChild(imageElement);
+        // On donne l'id du travaux
+        workElement.dataset.id = article.id;
+        console.log(workElement.dataset);
 
         // Ajouter l'icone pour supprimer les travaux depuis la modale
         const imageDelte = document.createElement("img");
@@ -283,3 +286,40 @@ document.querySelector(".modale__content__addWorks").addEventListener("click", (
     // console.log("Vous avea appuyer sur un bouton pour afficher la modale !")
     openModaleAddworks(event);
 })
+
+// Gérer la suppression de travaux (fenêtre modale 1)
+// Récupérer le bouton de supression
+let buttonDelte = document.querySelectorAll(".modale__content__gallery--delte");
+console.log(buttonDelte);
+
+// Indentifier le bouton de suppression
+for(let i = 0 ; i < buttonDelte.length ; i++) {
+    // Ajout d'une class au bouton pour identifier la position
+    buttonDelte[i].classList.add("position_"+i);
+    // On écoute le click pour récupérer les infos
+    buttonDelte[i].addEventListener("click", ()=> {
+        // On vérifie sur quelle bouton on a cliquer
+        console.log("vous avez clicker sur le bouton "+i);
+        // On récupère l'élément parent
+        const work = buttonDelte[i].parentElement;
+        console.log(work);
+        // On cherche l'id de la catégorie de l'élément
+        const workID = work.dataset.id;
+        console.log("ID de la catégorie de l'élément : "+ workID);
+        // On vérifie que j'ai bien le token
+        console.log(token); //OK!
+        // On supprimer masque l'élément sélectionné
+        fetch("http://localhost:5678/api/works/${workID}", {
+            method : 'DELETE',
+            headers : {'Authorization': `Bearer ${token}`,
+                "content-Type": "application/json"
+            }
+
+        })
+        .then(reponseDel => {
+            console.log("Status réponse : " , reponseDel.status);
+            generateWorks;
+            generateGalleryModale;
+        })
+    });
+}
