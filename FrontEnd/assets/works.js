@@ -288,3 +288,9 @@ document.querySelector(".modale__content__addWorks").addEventListener("click", (
 // Récupérer le bouton de supression
 let buttonDelte = document.querySelectorAll(".modale__content__gallery--delte");
 console.log(buttonDelte);
+
+// Indentifier le bouton de suppression
+for(let i = 0 ; i < buttonDelte.length ; i++) {
+    // Ajout d'une class au bouton pour identifier la position
+    buttonDelte[i].classList.add("position_"+i);
+}
