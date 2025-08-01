@@ -283,3 +283,8 @@ document.querySelector(".modale__content__addWorks").addEventListener("click", (
     // console.log("Vous avea appuyer sur un bouton pour afficher la modale !")
     openModaleAddworks(event);
 })
+
+// Gérer la suppression de travaux (fenêtre modale 1)
+// Récupérer le bouton de supression
+let buttonDelte = document.querySelectorAll(".modale__content__gallery--delte");
+console.log(buttonDelte);
