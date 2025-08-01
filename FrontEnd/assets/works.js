@@ -308,5 +308,16 @@ for(let i = 0 ; i < buttonDelte.length ; i++) {
         console.log("ID de la catégorie de l'élément : "+ workID);
         // On vérifie que j'ai bien le token
         console.log(token); //OK!
+        // On supprimer masque l'élément sélectionné
+        fetch("http://localhost:5678/api/works/${workID}", {
+            method : 'DELETE',
+            headers : {'Authorization': `Bearer ${token}`,
+                "content-Type": "application/json"
+            }
+
+        })
+        .then(reponseDel => {
+            console.log("Status réponse : " , reponseDel.status);
+        })
     });
 }
