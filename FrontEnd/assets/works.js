@@ -306,5 +306,7 @@ for(let i = 0 ; i < buttonDelte.length ; i++) {
         // On cherche l'id de la catégorie de l'élément
         const workID = work.dataset.id;
         console.log("ID de la catégorie de l'élément : "+ workID);
+        // On vérifie que j'ai bien le token
+        console.log(token); //OK!
     });
 }
