@@ -318,6 +318,8 @@ for(let i = 0 ; i < buttonDelte.length ; i++) {
         })
         .then(reponseDel => {
             console.log("Status réponse : " , reponseDel.status);
+            generateWorks;
+            generateGalleryModale;
         })
     });
 }
