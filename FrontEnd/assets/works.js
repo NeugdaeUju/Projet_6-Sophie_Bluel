@@ -323,3 +323,27 @@ for(let i = 0 ; i < buttonDelte.length ; i++) {
         })
     });
 }
+
+// Ajouter une photo à la gallery
+// Permettre de choisir la catégorie du travail ajouter
+async function choixCategories() {
+    try {
+        const select = document.getElementById("modale__addWorks__category");
+        const optionVide = document.createElement("option");
+        optionVide.textContent ="";
+        select.appendChild(optionVide);
+
+        categories.forEach((cat) => {
+            const option = document.createElement("option");
+            option.value = cat.id;
+            option.textContent = cat.name;
+            select.appendChild(option);
+        });
+    } catch (error) {
+        console.error("Erreur lors du chargementdes catégories : ", error);
+    }
+
+    
+}
+
+choixCategories();
