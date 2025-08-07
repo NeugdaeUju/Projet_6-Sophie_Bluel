@@ -419,11 +419,12 @@ footer nav ul {
 
 #modale__addWorks__text , #modale__addWorks__category {
 	width : 420px;
-	height : 50px;
 	margin-top : 10px;
 	border : none;
 	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.09);
 	background-color: white;
+	padding : 19px 16px;
+	color : #444444;
 }
 
 input:-webkit-autofill {
