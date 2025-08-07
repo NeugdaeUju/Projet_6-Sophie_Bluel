@@ -360,4 +360,13 @@ bouttonImage.addEventListener("change", () => {
      // On récupère l'image choisi
     const imageWork = bouttonImage.files[0];
     console.log(imageWork);
+    // On crée une boucle pour afficher l'image du travail choisi pour l'affichage
+    if (imageWork) {
+        const img = document.createElement("img");
+        img.src = URL.createObjectURL(imageWork);
+        img.classList.add("modale__addWorks__newImage")
+        const containerImage = document.querySelector(".modale__addWorks__form__addImage");
+        containerImage.innerHTML =""
+        containerImage.appendChild(img);
+    }
 })
