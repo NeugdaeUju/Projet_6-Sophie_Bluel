@@ -351,3 +351,8 @@ choixCategories();
 // Gérer le remplissage et l'envoie du formulaire d'ajout
 // On récupère le formulaire
 const formulaireAjout = document.querySelector(".modale__addWorks__form");
+// On récupère le bouton pour chercher une photo dans l'ordinateur
+const bouttonImage = document.querySelector(".modale__addWorks__form__addImage--input");
+bouttonImage.addEventListener("click", ()=> {
+    console.log("Vous avez cliquer pour ajouter une photo.")
+})
