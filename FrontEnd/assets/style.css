@@ -456,17 +456,21 @@ input:focus {
 	justify-content: center;
 	align-items: center;
 	background-color: #E8F1F6;
-	padding-top : 13px;
-	padding-bottom : 19px;
+	/*padding-top : 13px;
+	padding-bottom : 19px;*/
 }
 
 .modale__addWorks__form__addImage--image {
 	height : 76px;
 	width : 76px;
 	margin-bottom : 6px;
+	padding-top : 13px;
 }
 
 .modale__addWorks__form__addImages--button {
+	display : flex;
+	align-items: center;
+	justify-content: center;
 	width : 175px;
 	height : 35px;
 	border-radius : 60px;
@@ -477,9 +481,23 @@ input:focus {
 	cursor : pointer;
 }
 
+.modale__addWorks__newImage {
+	width: 129px;
+	height : 100%;
+}
+
+input[type="file"] {
+	opacity : 0;
+	width: 0.1px;
+	height : 0.1px;
+	position : absolute;
+	z-index : -1;
+}
+
 .modale__addWorks__form__addImage--subtitles {
 	font-family : 'Work Sans';
 	font-size : 10px;
 	font-weight: 400;
 	color : #444444;
+	padding-bottom : 19px;
 }
