@@ -347,3 +347,7 @@ async function choixCategories() {
 }
 
 choixCategories();
+
+// Gérer le remplissage et l'envoie du formulaire d'ajout
+// On récupère le formulaire
+const formulaireAjout = document.querySelector(".modale__addWorks__form");
