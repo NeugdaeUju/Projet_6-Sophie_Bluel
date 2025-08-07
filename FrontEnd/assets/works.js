@@ -356,3 +356,8 @@ const bouttonImage = document.querySelector(".modale__addWorks__form__addImage--
 bouttonImage.addEventListener("click", ()=> {
     console.log("Vous avez cliquer pour ajouter une photo.")
 })
+bouttonImage.addEventListener("change", () => {
+     // On récupère l'image choisi
+    const imageWork = bouttonImage.files[0];
+    console.log(imageWork);
+})
