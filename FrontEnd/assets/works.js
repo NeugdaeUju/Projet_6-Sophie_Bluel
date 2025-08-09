@@ -381,6 +381,10 @@ formulaireAjout.addEventListener("submit", (e) => {
     const imageInput = document.querySelector(".modale__addWorks__form__addImage--input");
     const titleInput = document.querySelector("#modale__addWorks__text");
     const categorieSelect = document.querySelector("#modale__addWorks__category");
+    // On cherche à confirmer que les éléments sont remplis
+    const imageOK = imageInput.files.length > 0;
+    const titleOK = titleInput.value.trim() !== "";
+    const categorieOK = categorieSelect.value !== "";
     
 
 })
