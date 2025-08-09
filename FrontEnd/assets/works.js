@@ -309,7 +309,7 @@ for(let i = 0 ; i < buttonDelte.length ; i++) {
         // On vérifie que j'ai bien le token
         console.log(token); //OK!
         // On supprimer masque l'élément sélectionné
-        fetch("http://localhost:5678/api/works/${workID}", {
+        fetch(`http://localhost:5678/api/works/${workID}`, {
             method : 'DELETE',
             headers : {'Authorization': `Bearer ${token}`,
                 "content-Type": "application/json"
@@ -351,6 +351,7 @@ choixCategories();
 // Gérer le remplissage et l'envoie du formulaire d'ajout
 // On récupère le formulaire
 const formulaireAjout = document.querySelector(".modale__addWorks__form");
+console.log(formulaireAjout);
 // On récupère le bouton pour chercher une photo dans l'ordinateur
 const bouttonImage = document.querySelector(".modale__addWorks__form__addImage--input");
 bouttonImage.addEventListener("click", ()=> {
@@ -369,4 +370,12 @@ bouttonImage.addEventListener("change", () => {
         containerImage.innerHTML =""
         containerImage.appendChild(img);
     }
+})
+
+// On vérfie que tous les éléments du formulaire d'ajout soient complété
+formulaireAjout.addEventListener("submit", (e) => {
+    // On évite le rechargement de la page
+    e.preventDefault();
+    console.log("submit capturé !")
+
 })
