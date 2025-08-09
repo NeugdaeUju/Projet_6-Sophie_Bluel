@@ -389,9 +389,9 @@ formulaireAjout.addEventListener("submit", (e) => {
     if(imageOK && titleOK && categorieOK) {
         console.log("Tous les champs sont remplis , on peut valider!")
         // On change l'apparence du bouton Valider
-        const boutonValider = document.querySelector("modale__addWorks__submit");
-        boutonValider.classList.remove(".modale__addWorks__submit");
-        boutonValider.classList.add(".modale__addWorks__submit--OK");
+        const boutonValider = document.querySelector(".modale__addWorks__submit");
+        boutonValider.classList.remove("modale__addWorks__submit");
+        boutonValider.classList.add("modale__addWorks__submit--OK");
         console.log("Le formulaire peut être envoyé!");
     } else {
         console.log("Il manque un ou plusieurs éléments !");
