@@ -377,5 +377,10 @@ formulaireAjout.addEventListener("submit", (e) => {
     // On évite le rechargement de la page
     e.preventDefault();
     console.log("submit capturé !")
+    // On récupère les éléments du formulaire
+    const imageInput = document.querySelector(".modale__addWorks__form__addImage--input");
+    const titleInput = document.querySelector("#modale__addWorks__text");
+    const categorieSelect = document.querySelector("#modale__addWorks__category");
+    
 
 })
