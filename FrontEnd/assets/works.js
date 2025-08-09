@@ -378,11 +378,11 @@ formulaireAjout.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log("submit capturé !")
     // On récupère les éléments du formulaire
-    const imageInput = document.querySelector(".modale__addWorks__form__addImage--input");
+    const imageInput = document.querySelector(".modale__addWorks__newImage");
     const titleInput = document.querySelector("#modale__addWorks__text");
     const categorieSelect = document.querySelector("#modale__addWorks__category");
     // On cherche à confirmer que les éléments sont remplis
-    const imageOK = imageInput.files.length > 0;
+    const imageOK = imageInput;
     const titleOK = titleInput.value.trim() !== "";
     const categorieOK = categorieSelect.value !== "";
     // On fait une boucle pour vérfier que toutes les conditions sont réunis
