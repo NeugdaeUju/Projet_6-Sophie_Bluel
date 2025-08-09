@@ -85,7 +85,7 @@
 				<button class="modale__addWoks__close"><img class ="modale__content__close--image" src="assets/icons/xmark.svg" alt="Fermer la fenêtre"></button>
 				<button class="modale__addWoks__back"><img class ="modale__content__back--image" src="assets/icons/arrow-left.png" alt="Retour"></button>
 				<h3 class="modale__addWorks__title">Ajout Photo</h3>
-				<form class="modale__addWorks__form">
+				<form class="modale__addWorks__form" id="modale__addWorks__form">
 					<div class="modale__addWorks__form__addImage">
 						<img src="assets/icons/img.svg" alt="images" class="modale__addWorks__form__addImage--image">
 						<label for="modale__addWorks__form__addImages--button" class="modale__addWorks__form__addImages--button">+ ajouter une photo</label>
@@ -93,12 +93,12 @@
 						<p class="modale__addWorks__form__addImage--subtitles">jpg, png : 4mo max</p>
 					</div>
 					<label for="modale__addWorks__text" class="modale__addWorks__text">Titre</label>
-					<input type="text" id="modale__addWorks__text" name="titre">
+					<input type="text" id="modale__addWorks__text" name="titre" required>
 					<label for="modale__addWorks__category" class="modale__addWorks__category">Catégories</label>
-					<select id="modale__addWorks__category" name="categorie">
+					<select id="modale__addWorks__category" name="categorie" required>
 					</select>
 				</form>
-				<button class="modale__addWorks__submit">Valider</button>
+				<button form="modale__addWorks__form" type="submnit" class="modale__addWorks__submit">Valider</button>
 			</div>
 		</div>
 </body>
