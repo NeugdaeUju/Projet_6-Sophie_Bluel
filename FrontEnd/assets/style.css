@@ -451,6 +451,20 @@ input:focus {
 	cursor : pointer;
 }
 
+.modale__addWorks__submit--OK {
+	width : 240px;
+	height : 35px;
+	background-color: #1D6154;
+	color : white;
+	font-family : 'Syne';
+	font-size : 14px;
+	font-weight : 700;
+	border : none;
+	border-radius : 60px;
+	margin-top : 32px;
+	cursor : pointer;
+}
+
 .modale__addWorks__form__addImage {
 	display : flex;
 	flex-direction : column;
