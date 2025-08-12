@@ -349,6 +349,7 @@ async function choixCategories() {
 choixCategories();
 
 // Gérer le remplissage et l'envoie du formulaire d'ajout
+let imageSelected = null;
 // On récupère le formulaire
 const formulaireAjout = document.querySelector(".modale__addWorks__form");
 console.log(formulaireAjout);
@@ -361,6 +362,7 @@ bouttonImage.addEventListener("change", () => {
      // On récupère l'image choisi
     const imageWork = bouttonImage.files[0];
     console.log(imageWork);
+    imageSelected = imageWork;
     // On crée une boucle pour afficher l'image du travail choisi pour l'affichage
     if (imageWork) {
         const img = document.createElement("img");
@@ -410,4 +412,13 @@ formulaireAjout.addEventListener("submit", (e) => {
     // On évite le rechargement de la page
     e.preventDefault();
     console.log("submit capturé !");
+    // On récupère les valeurs des éléments
+    const imageURL = imageSelected;
+    console.log(imageURL);
+    const title = titleInput.value;
+    console.log(title);
+    const categorie = categorieSelect.value;
+    console.log(categorie);
 })
+
+// On vide le formulaire une fois que la requete est envoyé (code 200)
