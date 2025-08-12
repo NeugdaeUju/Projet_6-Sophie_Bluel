@@ -424,6 +424,21 @@ formulaireAjout.addEventListener("submit", (e) => {
     formData.append("image", imageURL);
     formData.append("title", title);
     formData.append("categoryID", categorie);
+    // On envoie la requette de soumission
+    fetch(`http://localhost:5678/api/works`, {
+            method : 'POST',
+            headers : {'Authorization': `Bearer ${token}`,
+                "content-Type": "multipart/form-data",
+                'accept': 'application/json'
+            },
+            body : formData,
+
+        })
+        .then(reponsePOST => {
+            console.log("Status réponse : " , reponsePOST.status);
+            generateWorks;
+            generateGalleryModale;
+        })
 })
 
 // On vide le formulaire une fois que la requete est envoyé (code 200)
