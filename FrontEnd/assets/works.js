@@ -388,6 +388,14 @@ function formComplet() {
     if(!imageOK) {console.log("Voys devez choisir une image !")};
     if(!titleOK) {console.log("Vous devez renseigner un titre !")};
     if(!categorieOK) {console.log("Vous devez choisir une catégorie !")};
+      // On désactive le bouton de validation si le formulaire n'est pas complet
+    boutonValider.disabled = !(imageOK && titleOK && categorieOK);
+    // On modifie l'apparence du bouton si le formulaire est compléter
+    if (imageOK && titleOK && categorieOK) {
+        boutonValider.classList.remove("modale__addWorks__submit");
+        boutonValider.classList.add("modale__addWorks__submit--OK");
+        console.log("Le formulaire peut être envoyé!");
+    }
 }
 
 // On vérfie que tous les éléments du formulaire d'ajout soient complété
