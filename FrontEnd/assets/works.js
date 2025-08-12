@@ -419,6 +419,11 @@ formulaireAjout.addEventListener("submit", (e) => {
     console.log(title);
     const categorie = categorieSelect.value;
     console.log(categorie);
+    // On crée le formData pour la requete POST
+    const formData = new FormData();
+    formData.append("image", imageURL);
+    formData.append("title", title);
+    formData.append("categoryID", categorie);
 })
 
 // On vide le formulaire une fois que la requete est envoyé (code 200)
