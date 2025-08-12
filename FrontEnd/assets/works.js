@@ -167,7 +167,7 @@ function generateGalleryModale(works) {
         workElement.appendChild(imageElement);
         // On donne l'id du travaux
         workElement.dataset.id = article.id;
-        console.log(workElement.dataset);
+        // console.log(workElement.dataset);
 
         // Ajouter l'icone pour supprimer les travaux depuis la modale
         const imageDelte = document.createElement("img");
@@ -290,7 +290,7 @@ document.querySelector(".modale__content__addWorks").addEventListener("click", (
 // Gérer la suppression de travaux (fenêtre modale 1)
 // Récupérer le bouton de supression
 let buttonDelte = document.querySelectorAll(".modale__content__gallery--delte");
-console.log(buttonDelte);
+// console.log(buttonDelte);
 
 // Indentifier le bouton de suppression
 for(let i = 0 ; i < buttonDelte.length ; i++) {
@@ -352,16 +352,16 @@ choixCategories();
 let imageSelected = null;
 // On récupère le formulaire
 const formulaireAjout = document.querySelector(".modale__addWorks__form");
-console.log(formulaireAjout);
+// console.log(formulaireAjout);
 // On récupère le bouton pour chercher une photo dans l'ordinateur
 const bouttonImage = document.querySelector(".modale__addWorks__form__addImage--input");
 bouttonImage.addEventListener("click", ()=> {
-    console.log("Vous avez cliquer pour ajouter une photo.")
+    // console.log("Vous avez cliquer pour ajouter une photo.")
 })
 bouttonImage.addEventListener("change", () => {
      // On récupère l'image choisi
     const imageWork = bouttonImage.files[0];
-    console.log(imageWork);
+    // console.log(imageWork);
     imageSelected = imageWork;
     // On crée une boucle pour afficher l'image du travail choisi pour l'affichage
     if (imageWork) {
@@ -385,7 +385,7 @@ function formComplet() {
     const imageOK = document.querySelector(".modale__addWorks__newImage");
     const titleOK = titleInput.value.trim() !== "";
     const categorieOK = categorieSelect.value !== "";
-    console.log(imageOK, titleOK, categorieOK);
+    //console.log(imageOK, titleOK, categorieOK);
     // On notifie des erreur si les valeurs sont null ou vide
     if(!imageOK) {console.log("Voys devez choisir une image !")};
     if(!titleOK) {console.log("Vous devez renseigner un titre !")};
@@ -396,7 +396,7 @@ function formComplet() {
     if (imageOK && titleOK && categorieOK) {
         boutonValider.classList.remove("modale__addWorks__submit");
         boutonValider.classList.add("modale__addWorks__submit--OK");
-        console.log("Le formulaire peut être envoyé!");
+        // console.log("Le formulaire peut être envoyé!");
     }
     // On retourne les constantes
     return imageOK && titleOK && categorieOK;
@@ -411,14 +411,14 @@ categorieSelect.addEventListener('change', formComplet);
 formulaireAjout.addEventListener("submit", (e) => {
     // On évite le rechargement de la page
     e.preventDefault();
-    console.log("submit capturé !");
+    // console.log("submit capturé !");
     // On récupère les valeurs des éléments
     const imageURL = imageSelected;
-    console.log(imageURL);
+    // console.log(imageURL);
     const title = titleInput.value;
-    console.log(title);
+    // console.log(title);
     const categorie = categorieSelect.value;
-    console.log(categorie);
+    // console.log(categorie);
     // On crée le formData pour la requete POST
     const formData = new FormData();
     formData.append("image", imageURL);
