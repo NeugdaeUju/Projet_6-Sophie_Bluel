@@ -378,6 +378,14 @@ const titleInput = document.querySelector("#modale__addWorks__text");
 const categorieSelect = document.querySelector("#modale__addWorks__category");
 const boutonValider = document.querySelector(".modale__addWorks__submit");
 
+function formComplet() {
+    // On récupère le contenue des input/select
+    const imageOK = document.querySelector(".modale__addWorks__newImage");
+    const titleOK = titleInput.value.trim() !== "";
+    const categorieOK = categorieSelect.value !== "";
+    console.log(imageOK, titleOK, categorieOK)
+}
+
 // On vérfie que tous les éléments du formulaire d'ajout soient complété
 formulaireAjout.addEventListener("submit", (e) => {
     // On évite le rechargement de la page
