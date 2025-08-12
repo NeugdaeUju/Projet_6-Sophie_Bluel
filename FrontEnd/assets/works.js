@@ -438,7 +438,10 @@ formulaireAjout.addEventListener("submit", (e) => {
             console.log("Status réponse : " , reponsePOST.status);
             generateWorks;
             generateGalleryModale;
-        })
+        });
+    // On génère à nouveau les galleries
+    generateWorks;
+    generateGalleryModale;
 })
 
 // On vide le formulaire une fois que la requete est envoyé (code 200)
