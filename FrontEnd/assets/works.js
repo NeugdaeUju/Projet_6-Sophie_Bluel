@@ -383,7 +383,11 @@ function formComplet() {
     const imageOK = document.querySelector(".modale__addWorks__newImage");
     const titleOK = titleInput.value.trim() !== "";
     const categorieOK = categorieSelect.value !== "";
-    console.log(imageOK, titleOK, categorieOK)
+    console.log(imageOK, titleOK, categorieOK);
+    // On notifie des erreur si les valeurs sont null ou vide
+    if(!imageOK) {console.log("Voys devez choisir une image !")};
+    if(!titleOK) {console.log("Vous devez renseigner un titre !")};
+    if(!categorieOK) {console.log("Vous devez choisir une catégorie !")};
 }
 
 // On vérfie que tous les éléments du formulaire d'ajout soient complété
