@@ -396,7 +396,14 @@ function formComplet() {
         boutonValider.classList.add("modale__addWorks__submit--OK");
         console.log("Le formulaire peut être envoyé!");
     }
+    // On retourne les constantes
+    return imageOK && titleOK && categorieOK;
 }
+
+//On ajoute des écouteurs sur les élements du formulaire pour confirmer
+imageInput.addEventListener('change', formComplet);
+titleInput.addEventListener('input', formComplet);
+categorieSelect.addEventListener('change', formComplet);
 
 // On vérfie que tous les éléments du formulaire d'ajout soient complété
 formulaireAjout.addEventListener("submit", (e) => {
