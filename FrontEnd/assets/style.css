@@ -425,6 +425,7 @@ footer nav ul {
 	background-color: white;
 	padding : 19px 16px;
 	color : #444444;
+	box-sizing: content-box;
 }
 
 input:-webkit-autofill {
