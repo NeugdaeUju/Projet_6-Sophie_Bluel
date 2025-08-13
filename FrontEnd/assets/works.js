@@ -426,22 +426,33 @@ formulaireAjout.addEventListener("submit", (e) => {
     formData.append("categoryID", categorie);
     // On envoie la requette de soumission
     fetch(`http://localhost:5678/api/works`, {
-            method : 'POST',
-            headers : {'Authorization': `Bearer ${token}`,
-                "content-Type": "multipart/form-data",
-                'accept': 'application/json'
-            },
-            body : formData,
+        method : 'POST',
+        headers : {'Authorization': `Bearer ${token}`,
+            "content-Type": "multipart/form-data",
+            'accept': 'application/json'
+        },
+        body : formData,
 
-        })
-        .then(reponsePOST => {
-            console.log("Status réponse : " , reponsePOST.status);
-            generateWorks;
-            generateGalleryModale;
-        });
-    // On génère à nouveau les galleries
-    generateWorks;
-    generateGalleryModale;
+    })
+    .then(reponsePOST => {
+        console.log("Status réponse : " , reponsePOST.status);
+        // On génère à nouveau les gallery (modal et portfolio)
+        generateWorks;
+        generateGalleryModale;
+        // On vide le formulaire une fois que la requete est envoyé (code 201)
+        if (reponsePOST.status === 201) {
+            console.log("Vous avez cliquer sur le bouton d'envoie!");
+            titleInput.value = "";
+            categorieSelect.value = "";
+            let divImage = document.querySelector(".modale__addWorks__form__addImage");
+            divImage.innerHTML = "";
+            divImage.innerHTML = `
+                <img src="assets/icons/img.svg" alt="images" class="modale__addWorks__form__addImage--image">
+                <label for="modale__addWorks__form__addImages--button" class="modale__addWorks__form__addImages--button">+ ajouter une photo</label>
+                <input type="file" class="modale__addWorks__form__addImage--input" id="modale__addWorks__form__addImages--button" name="image" accept="image/*" required>
+                <p class="modale__addWorks__form__addImage--subtitles">jpg, png : 4mo max</p>`;
+            
+        }
+    });
 })
 
-// On vide le formulaire une fois que la requete est envoyé (code 200)
