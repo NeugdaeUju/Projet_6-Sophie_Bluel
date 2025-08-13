@@ -517,3 +517,12 @@ input[type="file"] {
 	color : #444444;
 	padding-bottom : 19px;
 }
+
+.form__message__erreur {
+	color : #1D6154;
+	font-size : 10px;
+	font-weight :600;
+	margin-top : 5px;
+	margin-left :10px;
+	
+}

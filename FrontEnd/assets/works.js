@@ -387,10 +387,28 @@ function formComplet() {
     const categorieOK = categorieSelect.value !== "";
     //console.log(imageOK, titleOK, categorieOK);
     // On notifie des erreur si les valeurs sont null ou vide
-    if(!imageOK) {console.log("Voys devez choisir une image !")};
-    if(!titleOK) {console.log("Vous devez renseigner un titre !")};
-    if(!categorieOK) {console.log("Vous devez choisir une catégorie !")};
-      // On désactive le bouton de validation si le formulaire n'est pas complet
+    if(!imageOK) {
+        console.log("Voys devez choisir une image !");
+        let messageErreur = document.createElement("p");
+        messageErreur.innerText = "Ce champs est obligatoire";
+        messageErreur.classList.add("form__message__erreur");
+        imageInput.insertAdjacentElement("afterend", messageErreur);
+    };
+    if(!titleOK) {
+        console.log("Vous devez renseigner un titre !");
+        let messageErreur = document.createElement("p");
+        messageErreur.innerText = "Ce champs est obligatoire";
+        messageErreur.classList.add("form__message__erreur");
+        titleInput.insertAdjacentElement("afterend", messageErreur);
+    };
+    if(!categorieOK) {
+        console.log("Vous devez choisir une catégorie !");
+        let messageErreur = document.createElement("p");
+        messageErreur.innerText = "Ce champs est obligatoire";
+        messageErreur.classList.add("form__message__erreur");
+        categorieSelect.insertAdjacentElement("afterend", messageErreur);
+    };
+    // On désactive le bouton de validation si le formulaire n'est pas complet
     boutonValider.disabled = !(imageOK && titleOK && categorieOK);
     // On modifie l'apparence du bouton si le formulaire est compléter
     if (imageOK && titleOK && categorieOK) {
