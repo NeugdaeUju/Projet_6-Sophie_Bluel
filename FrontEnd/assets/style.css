@@ -518,11 +518,11 @@ input[type="file"] {
 	padding-bottom : 19px;
 }
 
-.form__message__erreur {
+.form__message__erreur--image , .form__message__erreur--title , .form__message__erreur--categories {
 	color : #1D6154;
 	font-size : 10px;
 	font-weight :600;
 	margin-top : 5px;
 	margin-left :10px;
-	
+
 }

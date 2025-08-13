@@ -391,23 +391,36 @@ function formComplet() {
         console.log("Voys devez choisir une image !");
         let messageErreur = document.createElement("p");
         messageErreur.innerText = "Ce champs est obligatoire";
-        messageErreur.classList.add("form__message__erreur");
+        messageErreur.classList.add("form__message__erreur--image");
         imageInput.insertAdjacentElement("afterend", messageErreur);
     };
     if(!titleOK) {
         console.log("Vous devez renseigner un titre !");
         let messageErreur = document.createElement("p");
         messageErreur.innerText = "Ce champs est obligatoire";
-        messageErreur.classList.add("form__message__erreur");
+        messageErreur.classList.add("form__message__erreur--title");
         titleInput.insertAdjacentElement("afterend", messageErreur);
     };
     if(!categorieOK) {
         console.log("Vous devez choisir une catégorie !");
         let messageErreur = document.createElement("p");
         messageErreur.innerText = "Ce champs est obligatoire";
-        messageErreur.classList.add("form__message__erreur");
+        messageErreur.classList.add("form__message__erreur--categories");
         categorieSelect.insertAdjacentElement("afterend", messageErreur);
     };
+    // On retire le essage d'erreur si l'élément est complet
+    if (imageOK) {
+        const messageErreur = document.querySelector(".form__message__erreur--image");
+        messageErreur.remove();
+    }
+    if (titleOK) {
+        const messageErreur = document.querySelector(".form__message__erreur--title");
+        messageErreur.remove();
+    }
+    if (categorieOK) {
+        const messageErreur = document.querySelector(".form__message__erreur--categories");
+        messageErreur.remove();
+    }
     // On désactive le bouton de validation si le formulaire n'est pas complet
     boutonValider.disabled = !(imageOK && titleOK && categorieOK);
     // On modifie l'apparence du bouton si le formulaire est compléter
