@@ -7,10 +7,11 @@ const works = await reponse.json();
 
 // Fonction pour générer les fiches de travaux
 function generateWorks(works) {
+    // Récupération de l'élément du DOM qui accueillera les éléments
+        const sectionGallery = document.querySelector(".gallery");
+        sectionGallery.innerHTML = "";
     for (let i = 0 ; i < works.length ; i++) {
         const article = works[i]
-        // Récupération de l'élément du DOM qui accueillera les éléments
-        const sectionGallery = document.querySelector(".gallery");
         // Création d'une balise dédédier à un travail
         const workElement = document.createElement("figure");
         // Création du contenu de l'élément
@@ -151,10 +152,11 @@ if (logoutButton) {
 
 // Affichage des images des travaux dans la modale
 function generateGalleryModale(works) {
+    // Récupération de l'élément du DOM qui accueillera les éléments
+    const sectionGallery = document.querySelector(".modale__content__gallery");
+    sectionGallery.innerHTML = "";
     for (let i = 0 ; i < works.length ; i++) {
         const article = works[i]
-        // Récupération de l'élément du DOM qui accueillera les éléments
-        const sectionGallery = document.querySelector(".modale__content__gallery");
         // Création d'une balise dédédier à un travail
         const workElement = document.createElement("figure");
         // Création du contenu de l'élément
@@ -316,10 +318,15 @@ for(let i = 0 ; i < buttonDelte.length ; i++) {
             }
 
         })
-        .then(reponseDel => {
+        .then(async reponseDel => {
+            const reponse = await fetch("http://localhost:5678/api/works/");
+            const works = await reponse.json();
+
             console.log("Status réponse : " , reponseDel.status);
-            generateWorks;
-            generateGalleryModale;
+            generateWorks(works);
+            generateGalleryModale(works);
+
+            // Remettre les écouteurs sur les poubelles.
         })
     });
 }
@@ -387,11 +394,13 @@ function formComplet() {
     const categorieOK = categorieSelect.value !== "";
     //console.log(imageOK, titleOK, categorieOK);
     // On notifie des erreur si les valeurs sont null ou vide
+    document.querySelectorAll(".form__message__erreur").forEach(err => err.remove());
     if(!imageOK) {
         console.log("Voys devez choisir une image !");
         let messageErreur = document.createElement("p");
         messageErreur.innerText = "Ce champs est obligatoire";
         messageErreur.classList.add("form__message__erreur--image");
+        messageErreur.classList.add("form__message__erreur");
         imageInput.insertAdjacentElement("afterend", messageErreur);
     };
     if(!titleOK) {
@@ -399,6 +408,7 @@ function formComplet() {
         let messageErreur = document.createElement("p");
         messageErreur.innerText = "Ce champs est obligatoire";
         messageErreur.classList.add("form__message__erreur--title");
+        messageErreur.classList.add("form__message__erreur");
         titleInput.insertAdjacentElement("afterend", messageErreur);
     };
     if(!categorieOK) {
@@ -406,21 +416,9 @@ function formComplet() {
         let messageErreur = document.createElement("p");
         messageErreur.innerText = "Ce champs est obligatoire";
         messageErreur.classList.add("form__message__erreur--categories");
+        messageErreur.classList.add("form__message__erreur");
         categorieSelect.insertAdjacentElement("afterend", messageErreur);
     };
-    // On retire le essage d'erreur si l'élément est complet
-    if (imageOK) {
-        const messageErreur = document.querySelector(".form__message__erreur--image");
-        messageErreur.remove();
-    }
-    if (titleOK) {
-        const messageErreur = document.querySelector(".form__message__erreur--title");
-        messageErreur.remove();
-    }
-    if (categorieOK) {
-        const messageErreur = document.querySelector(".form__message__erreur--categories");
-        messageErreur.remove();
-    }
     // On désactive le bouton de validation si le formulaire n'est pas complet
     boutonValider.disabled = !(imageOK && titleOK && categorieOK);
     // On modifie l'apparence du bouton si le formulaire est compléter
@@ -454,12 +452,11 @@ formulaireAjout.addEventListener("submit", (e) => {
     const formData = new FormData();
     formData.append("image", imageURL);
     formData.append("title", title);
-    formData.append("categoryID", categorie);
+    formData.append("category", categorie);
     // On envoie la requette de soumission
     fetch(`http://localhost:5678/api/works`, {
         method : 'POST',
         headers : {'Authorization': `Bearer ${token}`,
-            "content-Type": "multipart/form-data",
             'accept': 'application/json'
         },
         body : formData,
@@ -468,8 +465,8 @@ formulaireAjout.addEventListener("submit", (e) => {
     .then(reponsePOST => {
         console.log("Status réponse : " , reponsePOST.status);
         // On génère à nouveau les gallery (modal et portfolio)
-        generateWorks;
-        generateGalleryModale;
+        generateWorks (works);
+        generateGalleryModale (works);
         // On vide le formulaire une fois que la requete est envoyé (code 201)
         if (reponsePOST.status === 201) {
             console.log("Vous avez cliquer sur le bouton d'envoie!");
