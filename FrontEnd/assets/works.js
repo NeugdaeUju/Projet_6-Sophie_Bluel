@@ -305,15 +305,15 @@ function addDeleteButton() {
             event.stopPropagation();
             event.preventDefault();
             // On vérifie sur quel bouton on a cliqué
-            console.log("vous avez cliqué sur le bouton "+i);
+            // console.log("vous avez cliqué sur le bouton "+i);
             // On récupère l'élément parent
             const work = buttonDelte[i].parentElement;
-            console.log(work);
+            // console.log(work);
             // On cherche l'id de la catégorie de l'élément
             const workID = work.dataset.id;
-            console.log("ID de la catégorie de l'élément : "+ workID);
+            // console.log("ID de la catégorie de l'élément : "+ workID);
             // On vérifie que j'ai bien le token
-            console.log(token); //OK!
+            // console.log(token); //OK!
             // On supprimer masque l'élément sélectionné
             fetch(`http://localhost:5678/api/works/${workID}`, {
                 method : 'DELETE',
@@ -372,12 +372,12 @@ const formulaireAjout = document.querySelector(".modale__addWorks__form");
 function addImage () {
     const bouttonImage = document.querySelector(".modale__addWorks__form__addImage--input");
     bouttonImage.addEventListener("click", ()=> {
-        console.log("Vous avez cliquer pour ajouter une photo.")
+        // console.log("Vous avez cliquer pour ajouter une photo.")
     })
     bouttonImage.addEventListener("change", () => {
         // On récupère l'image choisi
         const imageWork = bouttonImage.files[0];
-        console.log(imageWork);
+        // console.log(imageWork);
         imageSelected = imageWork;
         // On crée une boucle pour afficher l'image du travail choisi pour l'affichage
         if (imageWork) {
@@ -484,7 +484,7 @@ formulaireAjout.addEventListener("submit", (e) => {
         addDeleteButton();
         // On vide le formulaire une fois que la requete est envoyé (code 201)
         if (reponsePOST.status === 201) {
-            console.log("Vous avez cliquer sur le bouton d'envoie!");
+            // console.log("Vous avez cliquer sur le bouton d'envoie!");
             titleInput.value = "";
             categorieSelect.value = "";
             let divImage = document.querySelector(".modale__addWorks__form__addImage");

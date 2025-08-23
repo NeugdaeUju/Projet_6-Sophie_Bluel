@@ -309,18 +309,15 @@ footer nav ul {
 }
 
 .modale__content__gallery {
-	padding-bottom : 67px;
 	border-bottom : 1px solid #B3B3B3;
-	width : 420px;
-	display : grid ;
+	display: grid;
 	grid-template-columns: 75px 75px 75px 75px 75px;
-	grid-template-rows: 100px 100px 100px;
-	gap : 30px 9px;
+	grid-column-gap: 9px;
 }
 
 .modale__content__gallery--setup {
 	height : 100px;
-	width: 75px;
+	width: 100%;
 	object-fit: contain;
 }
 
