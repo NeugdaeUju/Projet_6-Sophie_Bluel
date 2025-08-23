@@ -369,25 +369,28 @@ let imageSelected = null;
 const formulaireAjout = document.querySelector(".modale__addWorks__form");
 // console.log(formulaireAjout);
 // On récupère le bouton pour chercher une photo dans l'ordinateur
-const bouttonImage = document.querySelector(".modale__addWorks__form__addImage--input");
-bouttonImage.addEventListener("click", ()=> {
-    // console.log("Vous avez cliquer pour ajouter une photo.")
-})
-bouttonImage.addEventListener("change", () => {
-     // On récupère l'image choisi
-    const imageWork = bouttonImage.files[0];
-    // console.log(imageWork);
-    imageSelected = imageWork;
-    // On crée une boucle pour afficher l'image du travail choisi pour l'affichage
-    if (imageWork) {
-        const img = document.createElement("img");
-        img.src = URL.createObjectURL(imageWork);
-        img.classList.add("modale__addWorks__newImage")
-        const containerImage = document.querySelector(".modale__addWorks__form__addImage");
-        containerImage.innerHTML =""
-        containerImage.appendChild(img);
-    }
-})
+function addImage () {
+    const bouttonImage = document.querySelector(".modale__addWorks__form__addImage--input");
+    bouttonImage.addEventListener("click", ()=> {
+        console.log("Vous avez cliquer pour ajouter une photo.")
+    })
+    bouttonImage.addEventListener("change", () => {
+        // On récupère l'image choisi
+        const imageWork = bouttonImage.files[0];
+        console.log(imageWork);
+        imageSelected = imageWork;
+        // On crée une boucle pour afficher l'image du travail choisi pour l'affichage
+        if (imageWork) {
+            const img = document.createElement("img");
+            img.src = URL.createObjectURL(imageWork);
+            img.classList.add("modale__addWorks__newImage")
+            const containerImage = document.querySelector(".modale__addWorks__form__addImage");
+            containerImage.innerHTML =""
+            containerImage.appendChild(img);
+        }
+    })
+}
+addImage();
 
 // On récupère les élements du formulaire
 const imageInput = document.querySelector(".modale__addWorks__form__addImage");
@@ -404,7 +407,7 @@ function formComplet() {
     // On notifie des erreur si les valeurs sont null ou vide
     document.querySelectorAll(".form__message__erreur").forEach(err => err.remove());
     if(!imageOK) {
-        console.log("Voys devez choisir une image !");
+        // console.log("Voys devez choisir une image !");
         let messageErreur = document.createElement("p");
         messageErreur.innerText = "Ce champs est obligatoire";
         messageErreur.classList.add("form__message__erreur--image");
@@ -412,7 +415,7 @@ function formComplet() {
         imageInput.insertAdjacentElement("afterend", messageErreur);
     };
     if(!titleOK) {
-        console.log("Vous devez renseigner un titre !");
+        // console.log("Vous devez renseigner un titre !");
         let messageErreur = document.createElement("p");
         messageErreur.innerText = "Ce champs est obligatoire";
         messageErreur.classList.add("form__message__erreur--title");
@@ -420,7 +423,7 @@ function formComplet() {
         titleInput.insertAdjacentElement("afterend", messageErreur);
     };
     if(!categorieOK) {
-        console.log("Vous devez choisir une catégorie !");
+        // console.log("Vous devez choisir une catégorie !");
         let messageErreur = document.createElement("p");
         messageErreur.innerText = "Ce champs est obligatoire";
         messageErreur.classList.add("form__message__erreur--categories");
@@ -470,11 +473,15 @@ formulaireAjout.addEventListener("submit", (e) => {
         body : formData,
 
     })
-    .then(reponsePOST => {
-        console.log("Status réponse : " , reponsePOST.status);
-        // On génère à nouveau les gallery (modal et portfolio)
-        generateWorks (works);
-        generateGalleryModale (works);
+    .then(async reponsePOST => {
+        const reponse = await fetch("http://localhost:5678/api/works/");
+        const works = await reponse.json();
+        //console.log("Status réponse : " , reponsePOST.status);
+        // Générer à nouveaux les gallery
+        generateWorks(works);
+        generateGalleryModale(works);
+        // Remettre les écouteurs sur les poubelles.
+        addDeleteButton();
         // On vide le formulaire une fois que la requete est envoyé (code 201)
         if (reponsePOST.status === 201) {
             console.log("Vous avez cliquer sur le bouton d'envoie!");
@@ -487,8 +494,11 @@ formulaireAjout.addEventListener("submit", (e) => {
                 <label for="modale__addWorks__form__addImages--button" class="modale__addWorks__form__addImages--button">+ ajouter une photo</label>
                 <input type="file" class="modale__addWorks__form__addImage--input" id="modale__addWorks__form__addImages--button" name="image" accept="image/*" required>
                 <p class="modale__addWorks__form__addImage--subtitles">jpg, png : 4mo max</p>`;
-            
+            boutonValider.classList.remove("modale__addWorks__submit--OK");
+            boutonValider.classList.add("modale__addWorks__submit");
         }
+        // On permet d'ajouter une nouvelle image
+        addImage();
     });
 })
 
