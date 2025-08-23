@@ -8,8 +8,8 @@ const works = await reponse.json();
 // Fonction pour générer les fiches de travaux
 function generateWorks(works) {
     // Récupération de l'élément du DOM qui accueillera les éléments
-        const sectionGallery = document.querySelector(".gallery");
-        sectionGallery.innerHTML = "";
+    const sectionGallery = document.querySelector(".gallery");
+    sectionGallery.innerHTML = "";
     for (let i = 0 ; i < works.length ; i++) {
         const article = works[i]
         // Création d'une balise dédédier à un travail
@@ -289,46 +289,55 @@ document.querySelector(".modale__content__addWorks").addEventListener("click", (
     openModaleAddworks(event);
 })
 
-// Gérer la suppression de travaux (fenêtre modale 1)
-// Récupérer le bouton de supression
-let buttonDelte = document.querySelectorAll(".modale__content__gallery--delte");
-// console.log(buttonDelte);
+function addDeleteButton() {
 
-// Indentifier le bouton de suppression
-for(let i = 0 ; i < buttonDelte.length ; i++) {
-    // Ajout d'une class au bouton pour identifier la position
-    buttonDelte[i].classList.add("position_"+i);
-    // On écoute le click pour récupérer les infos
-    buttonDelte[i].addEventListener("click", (event)=> {
-        event.stopPropagation();
-        event.preventDefault();
-        // On vérifie sur quelle bouton on a cliquer
-        console.log("vous avez clicker sur le bouton "+i);
-        // On récupère l'élément parent
-        const work = buttonDelte[i].parentElement;
-        console.log(work);
-        // On cherche l'id de la catégorie de l'élément
-        const workID = work.dataset.id;
-        console.log("ID de la catégorie de l'élément : "+ workID);
-        // On vérifie que j'ai bien le token
-        console.log(token); //OK!
-        // On supprimer masque l'élément sélectionné
-        fetch(`http://localhost:5678/api/works/${workID}`, {
-            method : 'DELETE',
-            headers : {'Authorization': `Bearer ${token}`,
-                "content-Type": "application/json"
-            }
+    // Gérer la suppression de travaux (fenêtre modale 1)
+    // Récupérer le bouton de supression
+    let buttonDelte = document.querySelectorAll(".modale__content__gallery--delte");
+    // console.log(buttonDelte);
 
-        })
-        .then(async reponseDel => {
-            const reponse = await fetch("http://localhost:5678/api/works/");
-            const works = await reponse.json();
+    // Indentifier le bouton de suppression
+    for(let i = 0 ; i < buttonDelte.length ; i++) {
+        // Ajout d'une class au bouton pour identifier la position
+        buttonDelte[i].classList.add("position_"+i);
+        // On écoute le click pour récupérer les infos
+        buttonDelte[i].addEventListener("click", (event)=> {
+            event.stopPropagation();
+            event.preventDefault();
+            // On vérifie sur quel bouton on a cliqué
+            console.log("vous avez cliqué sur le bouton "+i);
+            // On récupère l'élément parent
+            const work = buttonDelte[i].parentElement;
+            console.log(work);
+            // On cherche l'id de la catégorie de l'élément
+            const workID = work.dataset.id;
+            console.log("ID de la catégorie de l'élément : "+ workID);
+            // On vérifie que j'ai bien le token
+            console.log(token); //OK!
+            // On supprimer masque l'élément sélectionné
+            fetch(`http://localhost:5678/api/works/${workID}`, {
+                method : 'DELETE',
+                headers : {
+                    'Authorization': `Bearer ${token}`,
+                    "content-Type": "application/json"
+                }
 
-            console.log("Status réponse : " , reponseDel.status);
-            // Remettre les écouteurs sur les poubelles.
-        })
-    });
+            })
+            .then(async reponseDel => {
+                const reponse = await fetch("http://localhost:5678/api/works/");
+                const works = await reponse.json();
+                //console.log("Status réponse : " , reponseDel.status);
+                // Générer à nouveaux les gallery
+                generateWorks(works);
+                generateGalleryModale(works);
+                // Remettre les écouteurs sur les poubelles.
+                addDeleteButton();
+            })
+        });
+    }
 }
+
+addDeleteButton();
 
 // Ajouter une photo à la gallery
 // Permettre de choisir la catégorie du travail ajouter
