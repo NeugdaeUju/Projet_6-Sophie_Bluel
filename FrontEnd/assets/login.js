@@ -29,7 +29,7 @@ fetch("http://localhost:5678/api/users/login/", {
         if (data.token) {
             // console.log("Connexion réussi !")
             localStorage.setItem("token", data.token);
-            window.location.href = "http://127.0.0.1:5500/FrontEnd/index.html";
+            window.location.href = "http://127.0.0.1:5500/";
         } else {
             alert("Identifiants incorrects.");
         }

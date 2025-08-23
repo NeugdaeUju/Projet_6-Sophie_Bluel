@@ -7,10 +7,11 @@ const works = await reponse.json();
 
 // Fonction pour générer les fiches de travaux
 function generateWorks(works) {
+    // Récupération de l'élément du DOM qui accueillera les éléments
+    const sectionGallery = document.querySelector(".gallery");
+    sectionGallery.innerHTML = "";
     for (let i = 0 ; i < works.length ; i++) {
         const article = works[i]
-        // Récupération de l'élément du DOM qui accueillera les éléments
-        const sectionGallery = document.querySelector(".gallery");
         // Création d'une balise dédédier à un travail
         const workElement = document.createElement("figure");
         // Création du contenu de l'élément
@@ -151,10 +152,11 @@ if (logoutButton) {
 
 // Affichage des images des travaux dans la modale
 function generateGalleryModale(works) {
+    // Récupération de l'élément du DOM qui accueillera les éléments
+    const sectionGallery = document.querySelector(".modale__content__gallery");
+    sectionGallery.innerHTML = "";
     for (let i = 0 ; i < works.length ; i++) {
         const article = works[i]
-        // Récupération de l'élément du DOM qui accueillera les éléments
-        const sectionGallery = document.querySelector(".modale__content__gallery");
         // Création d'une balise dédédier à un travail
         const workElement = document.createElement("figure");
         // Création du contenu de l'élément
@@ -167,7 +169,7 @@ function generateGalleryModale(works) {
         workElement.appendChild(imageElement);
         // On donne l'id du travaux
         workElement.dataset.id = article.id;
-        console.log(workElement.dataset);
+        // console.log(workElement.dataset);
 
         // Ajouter l'icone pour supprimer les travaux depuis la modale
         const imageDelte = document.createElement("img");
@@ -287,39 +289,216 @@ document.querySelector(".modale__content__addWorks").addEventListener("click", (
     openModaleAddworks(event);
 })
 
-// Gérer la suppression de travaux (fenêtre modale 1)
-// Récupérer le bouton de supression
-let buttonDelte = document.querySelectorAll(".modale__content__gallery--delte");
-console.log(buttonDelte);
+function addDeleteButton() {
 
-// Indentifier le bouton de suppression
-for(let i = 0 ; i < buttonDelte.length ; i++) {
-    // Ajout d'une class au bouton pour identifier la position
-    buttonDelte[i].classList.add("position_"+i);
-    // On écoute le click pour récupérer les infos
-    buttonDelte[i].addEventListener("click", ()=> {
-        // On vérifie sur quelle bouton on a cliquer
-        console.log("vous avez clicker sur le bouton "+i);
-        // On récupère l'élément parent
-        const work = buttonDelte[i].parentElement;
-        console.log(work);
-        // On cherche l'id de la catégorie de l'élément
-        const workID = work.dataset.id;
-        console.log("ID de la catégorie de l'élément : "+ workID);
-        // On vérifie que j'ai bien le token
-        console.log(token); //OK!
-        // On supprimer masque l'élément sélectionné
-        fetch("http://localhost:5678/api/works/${workID}", {
-            method : 'DELETE',
-            headers : {'Authorization': `Bearer ${token}`,
-                "content-Type": "application/json"
-            }
+    // Gérer la suppression de travaux (fenêtre modale 1)
+    // Récupérer le bouton de supression
+    let buttonDelte = document.querySelectorAll(".modale__content__gallery--delte");
+    // console.log(buttonDelte);
 
-        })
-        .then(reponseDel => {
-            console.log("Status réponse : " , reponseDel.status);
-            generateWorks;
-            generateGalleryModale;
-        })
-    });
+    // Indentifier le bouton de suppression
+    for(let i = 0 ; i < buttonDelte.length ; i++) {
+        // Ajout d'une class au bouton pour identifier la position
+        buttonDelte[i].classList.add("position_"+i);
+        // On écoute le click pour récupérer les infos
+        buttonDelte[i].addEventListener("click", (event)=> {
+            event.stopPropagation();
+            event.preventDefault();
+            // On vérifie sur quel bouton on a cliqué
+            console.log("vous avez cliqué sur le bouton "+i);
+            // On récupère l'élément parent
+            const work = buttonDelte[i].parentElement;
+            console.log(work);
+            // On cherche l'id de la catégorie de l'élément
+            const workID = work.dataset.id;
+            console.log("ID de la catégorie de l'élément : "+ workID);
+            // On vérifie que j'ai bien le token
+            console.log(token); //OK!
+            // On supprimer masque l'élément sélectionné
+            fetch(`http://localhost:5678/api/works/${workID}`, {
+                method : 'DELETE',
+                headers : {
+                    'Authorization': `Bearer ${token}`,
+                    "content-Type": "application/json"
+                }
+
+            })
+            .then(async reponseDel => {
+                const reponse = await fetch("http://localhost:5678/api/works/");
+                const works = await reponse.json();
+                //console.log("Status réponse : " , reponseDel.status);
+                // Générer à nouveaux les gallery
+                generateWorks(works);
+                generateGalleryModale(works);
+                // Remettre les écouteurs sur les poubelles.
+                addDeleteButton();
+            })
+        });
+    }
 }
+
+addDeleteButton();
+
+// Ajouter une photo à la gallery
+// Permettre de choisir la catégorie du travail ajouter
+async function choixCategories() {
+    try {
+        const select = document.getElementById("modale__addWorks__category");
+        const optionVide = document.createElement("option");
+        optionVide.textContent ="";
+        select.appendChild(optionVide);
+
+        categories.forEach((cat) => {
+            const option = document.createElement("option");
+            option.value = cat.id;
+            option.textContent = cat.name;
+            select.appendChild(option);
+        });
+    } catch (error) {
+        console.error("Erreur lors du chargementdes catégories : ", error);
+    }
+
+    
+}
+
+choixCategories();
+
+// Gérer le remplissage et l'envoie du formulaire d'ajout
+let imageSelected = null;
+// On récupère le formulaire
+const formulaireAjout = document.querySelector(".modale__addWorks__form");
+// console.log(formulaireAjout);
+// On récupère le bouton pour chercher une photo dans l'ordinateur
+function addImage () {
+    const bouttonImage = document.querySelector(".modale__addWorks__form__addImage--input");
+    bouttonImage.addEventListener("click", ()=> {
+        console.log("Vous avez cliquer pour ajouter une photo.")
+    })
+    bouttonImage.addEventListener("change", () => {
+        // On récupère l'image choisi
+        const imageWork = bouttonImage.files[0];
+        console.log(imageWork);
+        imageSelected = imageWork;
+        // On crée une boucle pour afficher l'image du travail choisi pour l'affichage
+        if (imageWork) {
+            const img = document.createElement("img");
+            img.src = URL.createObjectURL(imageWork);
+            img.classList.add("modale__addWorks__newImage")
+            const containerImage = document.querySelector(".modale__addWorks__form__addImage");
+            containerImage.innerHTML =""
+            containerImage.appendChild(img);
+        }
+    })
+}
+addImage();
+
+// On récupère les élements du formulaire
+const imageInput = document.querySelector(".modale__addWorks__form__addImage");
+const titleInput = document.querySelector("#modale__addWorks__text");
+const categorieSelect = document.querySelector("#modale__addWorks__category");
+const boutonValider = document.querySelector(".modale__addWorks__submit");
+
+function formComplet() {
+    // On récupère le contenue des input/select
+    const imageOK = document.querySelector(".modale__addWorks__newImage");
+    const titleOK = titleInput.value.trim() !== "";
+    const categorieOK = categorieSelect.value !== "";
+    //console.log(imageOK, titleOK, categorieOK);
+    // On notifie des erreur si les valeurs sont null ou vide
+    document.querySelectorAll(".form__message__erreur").forEach(err => err.remove());
+    if(!imageOK) {
+        // console.log("Voys devez choisir une image !");
+        let messageErreur = document.createElement("p");
+        messageErreur.innerText = "Ce champs est obligatoire";
+        messageErreur.classList.add("form__message__erreur--image");
+        messageErreur.classList.add("form__message__erreur");
+        imageInput.insertAdjacentElement("afterend", messageErreur);
+    };
+    if(!titleOK) {
+        // console.log("Vous devez renseigner un titre !");
+        let messageErreur = document.createElement("p");
+        messageErreur.innerText = "Ce champs est obligatoire";
+        messageErreur.classList.add("form__message__erreur--title");
+        messageErreur.classList.add("form__message__erreur");
+        titleInput.insertAdjacentElement("afterend", messageErreur);
+    };
+    if(!categorieOK) {
+        // console.log("Vous devez choisir une catégorie !");
+        let messageErreur = document.createElement("p");
+        messageErreur.innerText = "Ce champs est obligatoire";
+        messageErreur.classList.add("form__message__erreur--categories");
+        messageErreur.classList.add("form__message__erreur");
+        categorieSelect.insertAdjacentElement("afterend", messageErreur);
+    };
+    // On désactive le bouton de validation si le formulaire n'est pas complet
+    boutonValider.disabled = !(imageOK && titleOK && categorieOK);
+    // On modifie l'apparence du bouton si le formulaire est compléter
+    if (imageOK && titleOK && categorieOK) {
+        boutonValider.classList.remove("modale__addWorks__submit");
+        boutonValider.classList.add("modale__addWorks__submit--OK");
+        // console.log("Le formulaire peut être envoyé!");
+    }
+    // On retourne les constantes
+    return imageOK && titleOK && categorieOK;
+}
+
+//On ajoute des écouteurs sur les élements du formulaire pour confirmer
+imageInput.addEventListener('change', formComplet);
+titleInput.addEventListener('input', formComplet);
+categorieSelect.addEventListener('change', formComplet);
+
+// On vérfie que tous les éléments du formulaire d'ajout soient complété
+formulaireAjout.addEventListener("submit", (e) => {
+    // On évite le rechargement de la page
+    e.preventDefault();
+    // console.log("submit capturé !");
+    // On récupère les valeurs des éléments
+    const imageURL = imageSelected;
+    // console.log(imageURL);
+    const title = titleInput.value;
+    // console.log(title);
+    const categorie = categorieSelect.value;
+    // console.log(categorie);
+    // On crée le formData pour la requete POST
+    const formData = new FormData();
+    formData.append("image", imageURL);
+    formData.append("title", title);
+    formData.append("category", categorie);
+    // On envoie la requette de soumission
+    fetch(`http://localhost:5678/api/works`, {
+        method : 'POST',
+        headers : {'Authorization': `Bearer ${token}`,
+            'accept': 'application/json'
+        },
+        body : formData,
+
+    })
+    .then(async reponsePOST => {
+        const reponse = await fetch("http://localhost:5678/api/works/");
+        const works = await reponse.json();
+        //console.log("Status réponse : " , reponsePOST.status);
+        // Générer à nouveaux les gallery
+        generateWorks(works);
+        generateGalleryModale(works);
+        // Remettre les écouteurs sur les poubelles.
+        addDeleteButton();
+        // On vide le formulaire une fois que la requete est envoyé (code 201)
+        if (reponsePOST.status === 201) {
+            console.log("Vous avez cliquer sur le bouton d'envoie!");
+            titleInput.value = "";
+            categorieSelect.value = "";
+            let divImage = document.querySelector(".modale__addWorks__form__addImage");
+            divImage.innerHTML = "";
+            divImage.innerHTML = `
+                <img src="assets/icons/img.svg" alt="images" class="modale__addWorks__form__addImage--image">
+                <label for="modale__addWorks__form__addImages--button" class="modale__addWorks__form__addImages--button">+ ajouter une photo</label>
+                <input type="file" class="modale__addWorks__form__addImage--input" id="modale__addWorks__form__addImages--button" name="image" accept="image/*" required>
+                <p class="modale__addWorks__form__addImage--subtitles">jpg, png : 4mo max</p>`;
+            boutonValider.classList.remove("modale__addWorks__submit--OK");
+            boutonValider.classList.add("modale__addWorks__submit");
+        }
+        // On permet d'ajouter une nouvelle image
+        addImage();
+    });
+})
+
