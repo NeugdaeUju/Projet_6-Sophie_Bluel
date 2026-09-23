@@ -1,5 +1,5 @@
 // Récupération des travaux depuis l'API
-const reponse = await fetch("http://localhost:5678/api/works/");
+const reponse = await fetch("https://projet-6-sophie-bluel.onrender.com/api/works/");
 const works = await reponse.json();
 
 // Vérification de la récupération des données
@@ -31,7 +31,7 @@ function generateWorks(works) {
 generateWorks(works);
 
 // Récupération des catégories
-const reponseCat = await fetch("http://localhost:5678/api/categories");
+const reponseCat = await fetch("https://projet-6-sophie-bluel.onrender.com/api/categories");
 const categories = await reponseCat.json();
 
 // Vérification de la récupération des données
@@ -315,7 +315,7 @@ function addDeleteButton() {
             // On vérifie que j'ai bien le token
             // console.log(token); //OK!
             // On supprimer masque l'élément sélectionné
-            fetch(`http://localhost:5678/api/works/${workID}`, {
+            fetch(`https://projet-6-sophie-bluel.onrender.com/api/works/${workID}`, {
                 method : 'DELETE',
                 headers : {
                     'Authorization': `Bearer ${token}`,
@@ -324,7 +324,7 @@ function addDeleteButton() {
 
             })
             .then(async reponseDel => {
-                const reponse = await fetch("http://localhost:5678/api/works/");
+                const reponse = await fetch("https://projet-6-sophie-bluel.onrender.com/api/works/");
                 const works = await reponse.json();
                 //console.log("Status réponse : " , reponseDel.status);
                 // Générer à nouveaux les gallery
@@ -465,7 +465,7 @@ formulaireAjout.addEventListener("submit", (e) => {
     formData.append("title", title);
     formData.append("category", categorie);
     // On envoie la requette de soumission
-    fetch(`http://localhost:5678/api/works`, {
+    fetch(`https://projet-6-sophie-bluel.onrender.com/api/works`, {
         method : 'POST',
         headers : {'Authorization': `Bearer ${token}`,
             'accept': 'application/json'
@@ -474,7 +474,7 @@ formulaireAjout.addEventListener("submit", (e) => {
 
     })
     .then(async reponsePOST => {
-        const reponse = await fetch("http://localhost:5678/api/works/");
+        const reponse = await fetch("https://projet-6-sophie-bluel.onrender.com/api/works/");
         const works = await reponse.json();
         //console.log("Status réponse : " , reponsePOST.status);
         // Générer à nouveaux les gallery

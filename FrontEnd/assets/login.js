@@ -18,7 +18,7 @@ const userData = {
 };
 
 // Comparaison des données de connexion aux données de l'API
-fetch("http://localhost:5678/api/users/login/", {
+fetch("https://projet-6-sophie-bluel.onrender.com/api/users/login/", {
     method : "POST",
     headers : {"Content-Type" : "application/json"},
     body : JSON.stringify(userData)
