@@ -29,7 +29,7 @@ fetch("https://projet-6-sophie-bluel.onrender.com/api/users/login/", {
         if (data.token) {
             // console.log("Connexion réussi !")
             localStorage.setItem("token", data.token);
-            window.location.href = "http://127.0.0.1:5500/";
+            window.location.href = "/index.html";
         } else {
             alert("Identifiants incorrects.");
         }
